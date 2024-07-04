@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GAMIFICANDO PY</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f0f4f8;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .logo-icon {
+            font-size: 2rem;
+            margin-right: 10px;
+        }
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        h1 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        #search {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border: 2px solid #3498db;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        #bookList {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            list-style-type: none;
+            margin-bottom: 30px;
+        }
+        .book {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        .book:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        .book-cover {
+            height: 200px; 
+            background-color: #3498db; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .book-cover img {
+            max-width: 100%; 
+            max-height: 100%; 
+        }
+        .book-info {
+            padding: 20px;
+        }
+        .book-title {
+            font-size: 1.2rem;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        .book-author {
+            font-style: italic;
+            color: #7f8c8d;
+            margin-bottom: 10px;
+        }
+        .book-year {
+            font-size: 0.9rem;
+            color: #95a5a6;
+            margin-bottom: 10px;
+        }
+        .book-synopsis {
+            font-size: 0.9rem;
+            color: #34495e;
+            margin-top: 10px;
+        }
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        .pagination button {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            margin: 0 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .pagination button:hover {
+            background-color: #2980b9;
+        }
+        .pagination button.active {
+            background-color: #2c3e50;
+        }
+        @media (max-width: 768px) {
+            #bookList {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <span class="logo-icon">📖⚡</span>
+                <span class="logo-text">GAMIFICANDO PY</span>
+            </div>
+            <h1>Colección de aplicaciones gamificadas</h1>
+            <input type="text" id="search" placeholder="Search for books...">
+        </header>
+        <ul id="bookList"></ul>
+        <div class="pagination">
+            <button class="active">1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>4</button>
+            <button>5</button>
+        </div>
+    </div>
+
+    <script>
+        const books = [
+            {
+                title: "Duolingo",
+                author: "Luis von Ahn",
+                year: 2011,
+                summary: "Es una plataforma web y una aplicación móvil en el que por medio de varios niveles y lecciones, puede aprender varios idiomas.",
+                imageURL: "logoproyectofinal2024.png",
+                keyFeatures: [
+                    "Learn multiple languages",
+                    "Gamified learning experience",
+                    "Daily goals and streaks",
+                    "Leaderboards and competitions"
+                ],
+                tutorialSteps: [
+                    {
+                        title: "Step 1: Choose a Language",
+                        description: "Select the language you want to learn from a wide range of options.",
+                        imageUrl: "logoproyectofinal2024.png"
+                    },
+                    {
+                        title: "Step 2: Set Your Daily Goal",
+                        description: "Choose how much time you want to spend learning each day."
+                    },
+                    {
+                        title: "Step 3: Complete Lessons",
+                        description: "Work through various lessons that teach vocabulary, grammar, and pronunciation."
+                    },
+                    {
+                        title: "Step 4: Practice and Review",
+                        description: "Reinforce your learning with practice sessions and regular reviews."
+                    }
+                ]
+            },
+            { 
+                title: "1984",
+                author: "George Orwell",
+                year: 1949,
+                summary: "A dystopian novel set in a totalitarian society, exploring themes of mass surveillance and the consequences of totalitarianism."
+            },
+            {
+                title: "Pride and Prejudice",
+                author: "Jane Austen",
+                year: 1813,
+                summary: "A classic romance novel following the emotional development of Elizabeth Bennet as she deals with issues of manners, upbringing, and marriage in Georgian England."
+            },
+            {
+                title: "The Great Gatsby",
+                author: "F. Scott Fitzgerald",
+                year: 1925,
+                summary: "A tragic love story set in the Jazz Age, critiquing the American Dream and the decadence of the Roaring Twenties."
+            },
+            {
+                title: "Moby-Dick",
+                author: "Herman Melville",
+                year: 1851,
+                summary: "An epic tale of obsession and adventure, as Captain Ahab pursues the white whale Moby Dick across the seas."
+            }
+        ];
+
+        const books2 = [
+            {
+                title: "Duolingo",
+                author: "Luis von Ahn",
+                year: 2011,
+                summary: "Es una plataforma web y una aplicación móvil en el que por medio de varios niveles y lecciones, puede aprender varios idiomas.",
+                imageURL: "logoproyectofinal2024.png"
+            },
+            { 
+                title: "1984",
+                author: "George Orwell",
+                year: 1949,
+                summary: "A dystopian novel set in a totalitarian society, exploring themes of mass surveillance and the consequences of totalitarianism."
+            },
+            {
+                title: "Pride and Prejudice",
+                author: "Jane Austen",
+                year: 1813,
+                summary: "A classic romance novel following the emotional development of Elizabeth Bennet as she deals with issues of manners, upbringing, and marriage in Georgian England."
+            },
+            {
+                title: "The Great Gatsby",
+                author: "F. Scott Fitzgerald",
+                year: 1925,
+                summary: "A tragic love story set in the Jazz Age, critiquing the American Dream and the decadence of the Roaring Twenties."
+            },
+            {
+                title: "Moby-Dick",
+                author: "Herman Melville",
+                year: 1851,
+                summary: "An epic tale of obsession and adventure, as Captain Ahab pursues the white whale Moby Dick across the seas."
+            }
+        ];
+
+        const books3 = [
+            {
+                title: "To Kill a Mockingbird",
+                author: "Harper Lee",
+                year: 1960,
+                summary: "A powerful story of racial injustice and loss of innocence in the American South, told through the eyes of young Scout Finch."
+            },
+            { 
+                title: "1984",
+                author: "George Orwell",
+                year: 1949,
+                summary: "A dystopian novel set in a totalitarian society, exploring themes of mass surveillance and the consequences of totalitarianism."
+            },
+            {
+                title: "Pride and Prejudice",
+                author: "Jane Austen",
+                year: 1813,
+                summary: "A classic romance novel following the emotional development of Elizabeth Bennet as she deals with issues of manners, upbringing, and marriage in Georgian England."
+            },
+            {
+                title: "The Great Gatsby",
+                author: "F. Scott Fitzgerald",
+                year: 1925,
+                summary: "A tragic love story set in the Jazz Age, critiquing the American Dream and the decadence of the Roaring Twenties."
+            },
+            {
+                title: "Moby-Dick",
+                author: "Herman Melville",
+                year: 1851,
+                summary: "An epic tale of obsession and adventure, as Captain Ahab pursues the white whale Moby Dick across the seas."
+            }
+        ];
+
+        const books4 = [
+            {
+                title: "Duolingo",
+                author: "Luis von Ahn",
+                year: 2011,
+                summary: "Es una plataforma web y una aplicación móvil en el que por medio de varios niveles y lecciones, puede aprender varios idiomas."
+            },
+            { 
+                title: "1984",
+                author: "George Orwell",
+                year: 1949,
+                summary: "A dystopian novel set in a totalitarian society, exploring themes of mass surveillance and the consequences of totalitarianism."
+            },
+            {
+                title: "Pride and Prejudice",
+                author: "Jane Austen",
+                year: 1813,
+                summary: "A classic romance novel following the emotional development of Elizabeth Bennet as she deals with issues of manners, upbringing, and marriage in Georgian England."
+            },
+            {
+                title: "The Great Gatsby",
+                author: "F. Scott Fitzgerald",
+                year: 1925,
+                summary: "A tragic love story set in the Jazz Age, critiquing the American Dream and the decadence of the Roaring Twenties."
+            },
+            {
+                title: "Moby-Dick",
+                author: "Herman Melville",
+                year: 1851,
+                summary: "An epic tale of obsession and adventure, as Captain Ahab pursues the white whale Moby Dick across the seas."
+            }
+        ];
+
+        const books5 = [
+            {
+                title: "To Kill a Mockingbird",
+                author: "Harper Lee",
+                year: 1960,
+                summary: "A powerful story of racial injustice and loss of innocence in the American South, told through the eyes of young Scout Finch."
+            },
+            { 
+                title: "1984",
+                author: "George Orwell",
+                year: 1949,
+                summary: "A dystopian novel set in a totalitarian society, exploring themes of mass surveillance and the consequences of totalitarianism."
+            },
+            {
+                title: "Pride and Prejudice",
+                author: "Jane Austen",
+                year: 1813,
+                summary: "A classic romance novel following the emotional development of Elizabeth Bennet as she deals with issues of manners, upbringing, and marriage in Georgian England."
+            },
+            {
+                title: "The Great Gatsby",
+                author: "F. Scott Fitzgerald",
+                year: 1925,
+                summary: "A tragic love story set in the Jazz Age, critiquing the American Dream and the decadence of the Roaring Twenties."
+            },
+            {
+                title: "Moby-Dick",
+                author: "Herman Melville",
+                year: 1851,
+                summary: "An epic tale of obsession and adventure, as Captain Ahab pursues the white whale Moby Dick across the seas."
+            }
+        ];
+
+        const bookList = document.getElementById('bookList');
+        const searchInput = document.getElementById('search');
+        const paginationButtons = document.querySelectorAll('.pagination button');
+
+        function displayBooks(booksToShow) {
+            bookList.innerHTML = '';
+            booksToShow.forEach(book => {
+                const li = document.createElement('li');
+                li.className = 'book';
+                li.innerHTML = `
+                    <div class="book-cover"><img src="${book.imageURL || 'default-cover.jpg'}" alt="portada del juego"></div>
+                    <div class="book-info">
+                        <div class="book-title">${book.title}</div>
+                        <div class="book-author">by ${book.author}</div>
+                        <div class="book-year">${book.year}</div>
+                        <div class="book-synopsis">${book.summary}</div>
+                    </div>
+                `;
+                li.addEventListener('click', () => {
+                    const bookData = {
+                        title: book.title,
+                        author: book.author,
+                        year: book.year,
+                        summary: book.summary,
+                        imageURL: book.imageURL || 'default-cover.jpg',
+                        keyFeatures: book.keyFeatures || [],
+                        tutorialSteps: book.tutorialSteps || []
+                    };
+                    const encodedData = encodeURIComponent(JSON.stringify(bookData));
+                    window.location.href = `book-details.html?data=${encodedData}`;
+                });
+                bookList.appendChild(li);
+            });
+        }
+
+        function filterBooks(query) {
+            if (query.trim() === '') {
+                // Si la búsqueda está vacía, mostramos los libros del array activo actual
+                const activeButton = document.querySelector('.pagination button.active');
+                switch (activeButton.textContent) {
+                    case '1':
+                        return books;
+                    case '2':
+                        return books2;
+                    case '3':
+                        return books3;
+                    case '4':
+                        return books4;
+                    case '5':
+                        return books5;
+                    default:
+                        return books; // Por defecto, mostramos el primer conjunto de libros
+                }
+            } else {
+                // Filtramos todos los libros según el criterio de búsqueda
+                const allBooks = [...books, ...books2, ...books3, ...books4, ...books5];
+                return allBooks.filter(book => 
+                    book.title.toLowerCase().includes(query.toLowerCase()) ||
+                    book.author.toLowerCase().includes(query.toLowerCase()) ||
+                    book.year.toString().includes(query) ||
+                    book.summary.toLowerCase().includes(query.toLowerCase()) 
+                );
+            }
+        }
+
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value;
+            const filteredBooks = filterBooks(query);
+            displayBooks(filteredBooks);
+        });
+
+        paginationButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                paginationButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                let valor = null;
+                switch (button.textContent) {
+                    case '1':
+                        valor = books;
+                        break;
+                    case '2':
+                        valor = books2;
+                        break;
+                    case '3':
+                        valor = books3;
+                        break;
+                    case '4':
+                        valor = books4;
+                        break;
+                    case '5':
+                        valor = books5;
+                        break;
+                }
+                displayBooks(valor);
+            });
+        });
+        displayBooks(books);
+    </script>
+</body>
+</html>
