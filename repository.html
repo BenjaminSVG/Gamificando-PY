@@ -30,16 +30,55 @@
             align-items: center;
             justify-content: center;
             margin-bottom: 20px;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
-        .logo-icon {
-            font-size: 2rem;
-            margin-right: 10px;
+
+        .logo img {
+            max-width: 100%;
+            height: auto;
+            max-height: 60px;
+            width: auto;
+            object-fit: contain;
+            margin-right: 15px;
         }
+
         .logo-text {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: bold;
-            color: #2c3e50;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
+
+        .py {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: #0038A8;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .py-red { color: #D52B1E; }
+        .py-white { color: #FFFFFF; }
+        .py-blue { color: #0038A8; }
+
+        @media (max-width: 768px) {
+            .logo {
+                flex-direction: column;
+                text-align: center;
+                padding: 15px;
+            }
+
+            .logo img {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+
+            .logo-text {
+                align-items: center;
+            }
+        }
+
         h1 {
             font-size: 2.5rem;
             color: #2c3e50;
@@ -141,8 +180,13 @@
     <div class="container">
         <header>
             <div class="logo">
-                <span class="logo-icon">📖⚡</span>
-                <span class="logo-text">GAMIFICANDO PY</span>
+                <img src="GamificandoPYOficial.png" alt="logo">
+                <div class="logo-text">
+                    <span class="gamificando">
+                        <span class="py-red">GAMI</span><span class="py-white">FIC</span><span class="py-blue">ANDO</span>
+                    </span>
+                    <span class="py">PY</span>
+                </div>
             </div>
             <h1>Colección de aplicaciones gamificadas</h1>
             <input type="text" id="search" placeholder="Search for books...">
@@ -163,7 +207,8 @@
                 title: "Duolingo",
                 author: "Luis von Ahn",
                 year: 2011,
-                summary: "Es una plataforma web y una aplicación móvil en el que por medio de varios niveles y lecciones, puede aprender varios idiomas.",
+                shortSummary: "A gamified platform for learning languages.",
+                fullSummary: "Es una plataforma web y una aplicación móvil en el que por medio de varios niveles y lecciones, puede aprender varios idiomas. Duolingo ofrece una experiencia de aprendizaje interactiva y personalizada, utilizando técnicas de gamificación para mantener a los usuarios motivados y comprometidos con su aprendizaje de idiomas.",
                 imageURL: "logoproyectofinal2024.png",
                 keyFeatures: [
                     "Learn multiple languages",
@@ -366,7 +411,7 @@
                         <div class="book-title">${book.title}</div>
                         <div class="book-author">by ${book.author}</div>
                         <div class="book-year">${book.year}</div>
-                        <div class="book-synopsis">${book.summary}</div>
+                        <div class="book-synopsis">${book.shortSummary}</div>
                     </div>
                 `;
                 li.addEventListener('click', () => {
@@ -374,7 +419,7 @@
                         title: book.title,
                         author: book.author,
                         year: book.year,
-                        summary: book.summary,
+                        summary: book.fullSummary,
                         imageURL: book.imageURL || 'default-cover.jpg',
                         keyFeatures: book.keyFeatures || [],
                         tutorialSteps: book.tutorialSteps || []

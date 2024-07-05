@@ -153,6 +153,12 @@
             object-fit: contain;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        .book-cover img:hover {
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            transform: translateY(-5px);
         }
 
         @media (min-width: 768px) {
@@ -267,6 +273,21 @@
                 font-size: 30px;
             }
         }
+
+        #summary {
+            background-color: white;
+            margin: 30px 0;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        #bookSummary {
+            line-height: 1.8;
+            text-align: justify;
+        }
+        
     </style>
 </head>
 <body>
