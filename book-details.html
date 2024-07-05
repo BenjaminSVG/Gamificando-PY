@@ -143,13 +143,22 @@
         .book-cover {
             text-align: center;
             margin-top: 20px;
+            max-width: 100%;
+            height: auto;
         }
-        
+
         .book-cover img {
             max-width: 100%;
             max-height: 300px;
+            object-fit: contain;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        @media (min-width: 768px) {
+            .book-cover img {
+                max-height: 400px;
+            }
         }
         
         @media (max-width: 600px) {
@@ -175,15 +184,66 @@
 
         .tutorial-image {
             flex: 0 0 200px;
+            max-width: 100%;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .tutorial-image:hover {
+            transform: scale(1.05);
         }
 
         .tutorial-image img {
             max-width: 100%;
             height: auto;
+            object-fit: contain;
             border-radius: 5px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            overflow: auto;
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 800px;
+            max-height: 80vh;
+            animation: zoom 0.6s;
+        }
+
+        @keyframes zoom {
+            from {transform:scale(0)}
+            to {transform:scale(1)}
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
         @media (max-width: 600px) {
             .tutorial-step {
                 flex-direction: column;
@@ -243,6 +303,11 @@
         </div>
     </section>
 
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
     <script>
         // Get the encoded data from URL
         const encodedData = new URLSearchParams(window.location.search).get('data');
@@ -277,11 +342,33 @@
                     <p>${step.description}</p>
                 </div>
                 <div class="tutorial-image">
-                    <img src="${step.imageUrl}" alt="">
+                    <img src="${step.imageUrl}" alt="" loading="lazy">
                 </div>
             `;
             tutorialStepsContainer.appendChild(div);
         });
+
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const closeBtn = document.getElementsByClassName('close')[0];
+
+        document.querySelectorAll('.tutorial-image img').forEach(img => {
+            img.onclick = function() {
+                modal.style.display = "block";
+                modalImg.src = this.src;
+            }
+        });
+
+        closeBtn.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
     </script>
 </body>
 </html>
