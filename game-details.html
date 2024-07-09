@@ -189,8 +189,12 @@
         }
 
         .tutorial-image {
-            flex: 0 0 200px;
-            max-width: 50%;
+            width: 150px; /* Tamaño preestablecido */
+            max-width: 100%;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease;
         }
 
         .tutorial-image.has-image {
