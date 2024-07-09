@@ -140,14 +140,14 @@
             font-weight: bold;
         }
         
-        .book-cover {
+        .game-cover {
             text-align: center;
             margin-top: 20px;
             max-width: 100%;
             height: auto;
         }
 
-        .book-cover img {
+        .game-cover img {
             max-width: 100%;
             max-height: 300px;
             object-fit: contain;
@@ -156,13 +156,13 @@
             transition: box-shadow 0.3s ease, transform 0.3s ease;
         }
 
-        .book-cover img:hover {
+        .game-cover img:hover {
             box-shadow: 0 8px 16px rgba(0,0,0,0.2);
             transform: translateY(-5px);
         }
 
         @media (min-width: 768px) {
-            .book-cover img {
+            .game-cover img {
                 max-height: 400px;
             }
         }
@@ -283,7 +283,7 @@
             transition: transform 0.3s ease;
         }
 
-        #bookSummary {
+        #gameSummary {
             line-height: 1.8;
             text-align: justify;
         }
@@ -292,34 +292,34 @@
 </head>
 <body>
     <header>
-        <h1 id="bookTitle">Book Title</h1>
+        <h1 id="gameTitle">Game Title</h1>
         <nav>
-            <button class="menu-button" onclick="window.history.back()">Back to List</button>
+            <button class="menu-button" onclick="window.history.back()">Volver al Menú</button>
         </nav>
     </header>
 
     <section id="info">
-        <h2>Book Information</h2>
+        <h2>Información de la Aplicación</h2>
         <div class="info-grid">
             <div class="info-item">
-                <strong>Author:</strong> <span id="bookAuthor"></span>
+                <strong>Author:</strong> <span id="gameAuthor"></span>
             </div>
             <div class="info-item">
-                <strong>Year:</strong> <span id="bookYear"></span>
+                <strong>Year:</strong> <span id="gameYear"></span>
             </div>
         </div>
-        <div class="book-cover">
-            <img id="bookCover" src="" alt="Book Cover">
+        <div class="game-cover">
+            <img id="gameCover" src="" alt="Game Cover">
         </div>
     </section>
 
     <section id="summary">
-        <h2>Summary</h2>
-        <p id="bookSummary"></p>
+        <h2>Descripción</h2>
+        <p id="gameSummary"></p>
     </section>
 
     <section id="features">
-        <h2>Key Features</h2>
+        <h2>Temas</h2>
         <ul class="features-list" id="keyFeatures">
             <!-- Features will be populated dynamically -->
         </ul>
@@ -340,21 +340,21 @@
     <script>
         // Get the encoded data from URL
         const encodedData = new URLSearchParams(window.location.search).get('data');
-        const bookData = JSON.parse(decodeURIComponent(encodedData));
+        const gameData = JSON.parse(decodeURIComponent(encodedData));
 
         // Populate the page with book details
-        document.getElementById('bookTitle').textContent = bookData.title;
-        document.getElementById('bookAuthor').textContent = bookData.author;
-        document.getElementById('bookYear').textContent = bookData.year;
-        document.getElementById('bookSummary').textContent = bookData.summary;
-        document.getElementById('bookCover').src = bookData.imageURL;
+        document.getElementById('gameTitle').textContent = gameData.title;
+        document.getElementById('gameAuthor').textContent = gameData.author;
+        document.getElementById('gameYear').textContent = gameData.year;
+        document.getElementById('gameSummary').textContent = gameData.summary;
+        document.getElementById('gameCover').src = gameData.imageURL;
 
         // Update the page title
-        document.title = bookData.title + ' - Book Details';
+        document.title = gameData.title + ' - Game Details';
 
         // Populate key features
         const featuresList = document.getElementById('keyFeatures');
-        bookData.keyFeatures.forEach(feature => {
+        gameData.keyFeatures.forEach(feature => {
             const li = document.createElement('li');
             li.textContent = feature;
             featuresList.appendChild(li);
@@ -362,7 +362,7 @@
 
         // Populate tutorial steps
         const tutorialStepsContainer = document.getElementById('tutorialSteps');
-        bookData.tutorialSteps.forEach(step => {
+        gameData.tutorialSteps.forEach(step => {
             const div = document.createElement('div');
             div.className = 'tutorial-step';
             
