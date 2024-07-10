@@ -118,17 +118,37 @@
         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
       }
       .game-cover {
-        height: 200px;
+        height: 170px;
         background-color: #3498db;
         display: flex;
         align-items: center;
         justify-content: center;
+        overflow: hidden;
+        position: relative;
+        border-radius: 10px 10px 0 0;
+        box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .game-cover::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0) 100%);
+        z-index: 1;
       }
 
       .game-cover img {
-        max-width: 100%;
-        max-height: 100%;
-        object-fit: contain;
+        width: 100%;
+        height: 100%;
+        
+        transition: transform 0.3s ease;
+      }
+
+      .game:hover .game-cover img {
+        transform: scale(1.05);
       }
 
       .game-info {
@@ -217,7 +237,7 @@
             "Plataforma en línea que permite crear y compartir tarjetas digitales de memoria para la enseñanza.",
           fullSummary:
             "Brainscape es una plataforma en línea que permite crear y compartir tarjetas digitales de memoria para la enseñanza. Los estudiantes pueden crear tarjetas de vocabulario, ejercicios de relación y más. La herramienta fomenta el aprendizaje autónomo y se adapta a diferentes necesidades.",
-          imageURL: "logoproyectofinal2024.png",
+          imageURL: "imglogo/brainscapelogo.png",
           keyFeatures: [
             "Dinámico",
             "Online",
@@ -262,7 +282,7 @@
             "Plataforma gratuita con múltiples propuestas que abordan áreas como ciencias, geografía, idiomas, deportes, televisión, tecnología, literatura, entre otras.",
           fullSummary:
             "La plataforma basa su método didáctico en dos características clave. Por un lado, la gamificación de los contenidos: la plataforma incluye elementos como retos, rankings y méritos para aumentar la motivación del alumno. Por otro lado, la co-creación como elemento fundamental, puesto que permite diseñar fácilmente propuestas personalizadas. Y al elaborar un juego, se interioriza mejor el contenido, ayudando así en el proceso de aprendizaje.",
-          imageURL: "logoproyectofinal2024.png",
+          imageURL: "imglogo/cerebritilogo.png",
           keyFeatures: [
             "Múltiples juegos",
             "Online",
@@ -313,7 +333,7 @@
             "Es una plataforma en web y en app fácil de usar y pensada para niños. Este ejemplo de gamificación implica a los alumnos y conecta a las familias con los logros de sus hijos.",
           fullSummary:
             "Es una plataforma en web y en app fácil de usar y pensada para niños. Este ejemplo de gamificación implica a los alumnos y conecta a las familias con los logros de sus hijos. Crea avatares que son pequeños monstruos de colores, asigna emblemas positivos y negativos, notifica a las familias en tiempo real sobre el comportamiento de sus hijos y genera informes de evaluación de los alumnos. Además, se puede conectar con Google Classroom y el LMS de la escuela (Learning Management System: Sistema de Gestión del Aprendizaje).",
-          imageURL: "logoproyectofinal2024.png",
+          imageURL: "imglogo/classdojologo.png",
           keyFeatures: [
             "Tareas virtuales",
             "Control de tareas",
@@ -371,7 +391,7 @@
             "Comunidad educativa de programación de sistemas. En la plataforma, los desarrolladores de software participan en desafíos de programación.",
           fullSummary:
             "Es una comunidad educativa de programación de sistemas. En la plataforma, los desarrolladores de software participan en desafíos de programación conocidos como kata (ejercicios dirigidos a que los programadores desarrollen sus habilidades a  base de práctica y repetición). Estos ejercicios entrenan un rango de habilidades en una variedad de lenguajes de programación y se completan dentro de un ambiente de desarrollo integrado en línea, en el que los usuarios tienen la posibilidad de ganar rangos y honor.",
-          imageURL: "logoproyectofinal2024.png",
+          imageURL: "imglogo/codewarslogo.png",
           keyFeatures: [
             "Aprendizaje desde casa",
             "Desafíos de programación",
@@ -439,7 +459,7 @@
             "Plataforma web y una aplicación móvil en el que por medio de varios niveles y lecciones, puede aprender varios idiomas.",
           fullSummary:
             "Es una plataforma web y una aplicación móvil en el que por medio de varios niveles y lecciones, puede aprender varios idiomas, además de tener gemas para recompensarte por hacer varias lecciones y también tiene la rachas, por lo que si usted lo utiliza todos los días y hace al menos una lección, su racha tendrá un día más, y así sucesivamente. Esta es una aplicación ideal para el aprendizaje básico a intermedio de idiomas, lo que ayudará a los niños, adolescentes e incluso adultos a aprender idiomas de una forma divertida e interactiva. Es un gran ejemplo de que una aplicación gamificada puede tener buenos resultados.",
-          imageURL: "logoproyectofinal2024.png",
+          imageURL: "imglogo/duolingologo.png",
           keyFeatures: [
             "Aprendizaje desde casa",
             "Encuestas o Quiz",
@@ -498,7 +518,7 @@
             "Plataforma educativa que permite crear y compartir actividades multimedia y juegos de tipo educativo fácilmente y de forma muy intuitiva.",
           fullSummary:
             "Educaplay es una plataforma educativa que permite crear y compartir actividades multimedia y juegos de tipo educativo fácilmente y de forma muy intuitiva. Educaplay es gratuita, por lo que puedes aportar un gran valor pedagógico sin ningún coste. Si quieres ir a un nivel superior en la creación de tus actividades y juegos Educaplay ofrece un servicio premium en el que obtienes una serie de ventajas y opciones, pero para un uso básico con el gratuito es suficiente.",
-          imageURL: "logoproyectofinal2024.png",
+          imageURL: "imglogo/educaplaylogo.png",
           keyFeatures: [
             "Interacción en clase",
             "Online",
@@ -546,7 +566,7 @@
             "Consiste en colocar las ranas en las hojas utilizando código CSS.",
           fullSummary:
             "Consiste en colocar las ranas en las hojas utilizando código CSS. Tiene 24 niveles y en cada nivel se va reforzando cada propiedad utilizada dentro de Flexbox. Sirve para aprender sobre el estilizado de las páginas web, cómo posicionar cada elemento en un lugar fijo y cómo estructurar de una forma adecuada cada elemento. Es así que, Flexbox Froggy sirve para los primeros años para la informática, para aprender estos conceptos y su uso de una forma visual e interactiva.",
-          imageURL: "logoproyectofinal2024.png",
+          imageURL: "imglogo/flexboxfroggylogo.png",
           keyFeatures: [
             "Aprendizaje desde casa",
             "Desafíos de programación CSS",
@@ -599,7 +619,7 @@
             "Es una herramienta online que te permite crear contenido interactivo de manera sencilla.",
           fullSummary:
             "Se trata de una herramienta gratuita y online, para usar desde nuestro navegador favorito, donde solo es necesario crear una cuenta de usuario. Las creaciones se pueden compartir fácilmente en redes sociales, correo electrónico o WhatsApp entre otras. La plataforma permite integrar todo tipo de recursos: imágenes en redes sociales, audio, contenidos de Twitter, de Facebook o de cualquier otra red social.",
-          imageURL: "logoproyectofinal2024.png",
+          imageURL: "imglogo/geniallylogo.png",
           keyFeatures: [
             "Participación en clase",
             "Presentaciones gamificadas",
@@ -658,7 +678,7 @@
             "Tablet o dispositivo móvil a cualquier parte y utilizarlo como un cuaderno convencional.",
           fullSummary:
             "Con iCuadernos, los niños podrán llevar su tablet o dispositivo móvil a cualquier parte y utilizarlo como un cuaderno convencional. La aplicación cuenta con un sistema intuitivo y fácil de usar, y un Búho-tutor que guía al niño explicándole los ejercicios y corrigiéndolos en el momento. Estos nuevos cuadernos vienen en formato de cuadernillo blanco y el contenido puede seleccionarse entre: ‘Operaciones’, ‘Problemas’ y ‘Educación infantil’. Con iCuadernos los niños realizan operaciones matemáticas básicas, pintar y colorear dibujos, así como también, resuelven ejercicios de lectura y escritura.",
-          imageURL: "logoproyectofinal2024.png",
+          imageURL: "imglogo/icuadernoslogo.png",
           keyFeatures: [
             "Cuaderno virtual",
             "Matemática",
@@ -706,7 +726,7 @@
           shortSummary: "App de quiz y concursos de preguntas y respuestas.",
           fullSummary:
             "Es una app de quiz y concursos de preguntas y respuestas. Se trata de una herramienta muy fácil de usar. El factor de la competitividad y el ranking final cuando se finaliza el test hacen de esta aplicación un juego muy divertido. En definitiva, es una herramienta perfecta para evaluar todos juntos lo aprendido al finalizar un temario en cualquier nivel educativo, como puede ser secundaria o también universidad (si se da el caso).",
-          imageURL: "logoproyectofinal2024.png",
+          imageURL: "imglogo/kahootlogo.png",
           keyFeatures: [
             "Participación en clase",
             "Encuestas o Quiz",
@@ -764,7 +784,7 @@
           shortSummary: "Simulador gamificado de proyectos de aprendizaje.",
           fullSummary:
             "Un simulador gamificado de proyectos de aprendizaje que permite a docentes y estudiantes desarrollar un conjunto de habilidades fundamentales para desenvolverse en el exigente mundo de hoy. Kimen es un completo conjunto de proyectos de aprendizaje, donde los/as docentes y estudiantes vivirán una experiencia educativa interactiva y entretenida, enfrentando diversos desafíos que promueven un aprendizaje efectivo y significativo.",
-          imageURL: "logoproyectofinal2024.png",
+          imageURL: "imglogo/kimenlogo.png",
           keyFeatures: ["Simulación", "Proyectos", "Dinámico", "Juego"],
           tutorialSteps: [
             {
@@ -793,7 +813,7 @@
             "Herramienta digital que permite crear y presentar presentaciones interactivas con una opción de votación en tiempo real para el público.",
           fullSummary:
             "Mentimeter es una herramienta digital que permite crear y presentar presentaciones interactivas con una opción de votación en tiempo real para el público. Mentimeter promueve la participación de los/as estudiantes, la audiencia o los asistentes a un evento, conferencia o taller. La aplicación ofrece diferentes formatos de participación, como preguntas, encuestas y juegos.",
-          imageURL: "logoproyectofinal2024.png",
+          imageURL: "imglogo/mentimeterlogo.png",
           keyFeatures: [
             "Presentaciones y formularios",
             "Interacción en clase",
@@ -851,7 +871,7 @@
             "Es una versión educativa de minecraft que ofrece una gran variedad de recursos educativos.",
           fullSummary:
             "Revolucionó la forma en que se enseña y se aprende en las aulas, proporcionando un entorno virtual interactivo donde los estudiantes pueden explorar conceptos y desarrollar habilidades de manera práctica y divertida. A través de la construcción de estructuras y la resolución de problemas, los estudiantes desarrollan habilidades clave como la colaboración, la comunicación y el pensamiento lógico. Además, Minecraft Education ofrece una gran variedad de recursos educativos, como lecciones predefinidas y mundos temáticos, que permiten a los profesores adaptar el juego a los objetivos de aprendizaje de sus estudiantes.",
-          imageURL: "logoproyectofinal2024.png",
+          imageURL: "imglogo/minecraftlogo.png",
           keyFeatures: [
             "Mundos temáticos",
             "Participación en clase",
@@ -906,7 +926,7 @@
             "herramienta freemium de participación que ayuda a los profesores a involucrar y supervisar a los estudiantes con lecciones interactivas, encuestas, comentarios, paneles de control y más",
           fullSummary:
             "Pear Deck es una herramienta freemium de participación que ayuda a los profesores a involucrar y supervisar a los estudiantes con lecciones interactivas, encuestas, comentarios, paneles de control y más. Además, brinda información en tiempo real al profesor, que recibe retroalimentación inmediata sobre el aprendizaje de sus estudiantes. Pear Deck es una plataforma de participación estudiantil basada en la nube que permite a las escuelas organizar clases sincrónicas y asincrónicas para estudiantes remotos, mejorar las discusiones grupales y realizar un seguimiento de la participación en tiempo real.",
-          imageURL: "logoproyectofinal2024.png",
+          imageURL: "imglogo/pearlogo.png",
           keyFeatures: [
             "Monitoreo",
             "Encuestas y creación de juegos",
@@ -961,7 +981,7 @@
             "Evaluar al alumnado de forma lúdica, obteniendo los resultados de sus pruebas en tiempo real.",
           fullSummary:
             "Evaluar al alumnado de forma lúdica, obteniendo los resultados de sus pruebas en tiempo real y convirtiendo el aprendizaje en un juego. Esta es la función de Plickers, una herramienta que emplea la realidad aumentada y puede utilizarse desde la página web o desde la app para smartphones y tablets Android e iOS.",
-          imageURL: "logoproyectofinal2024.png",
+          imageURL: "imglogo/plickerslogo.png",
           keyFeatures: [
             "Quiz o preguntas",
             "Participación en clase",
@@ -1005,7 +1025,7 @@
             "Es una plataforma online que permite lanzar preguntas a una audiencia.",
           fullSummary:
             "Poll Everywhere es una plataforma online que permite lanzar preguntas a una audiencia. Los participantes pueden responder de forma anónima a la encuesta sin necesidad de registrarse en la plataforma desde cualquier dispositivo. Poll Everywhere permite a los usuarios visualizar los resultados de las encuestas y los sondeos compilados y presentados como gráficos en tiempo real.",
-          imageURL: "logoproyectofinal2024.png",
+          imageURL: "imglogo/polllogo.png",
           keyFeatures: [
             "Cuestionarios",
             "Online",
@@ -1045,7 +1065,7 @@
             "Aprende rápidamente las fórmulas químicas de las sustancias e iones inorgánicos y orgánicos más importantes.",
           fullSummary:
             "Aprende rápidamente las fórmulas químicas de las sustancias e iones inorgánicos y orgánicos más importantes, que se enseñan en la educación secundaria (bachillerato), realizando los cuestionarios gratuitos de opción múltiple. Se da el nombre sistemático, el nombre trivial (nombre común) o ambos, dependiendo de su importancia.",
-          imageURL: "logoproyectofinal2024.png",
+          imageURL: "imglogo/quizquimicalogo.png",
           keyFeatures: [
             "Aprende desde casa",
             "Encuestas o Quiz",
@@ -1083,7 +1103,7 @@
           shortSummary: "Web que nos permite crear cuestionarios online.",
           fullSummary:
             "Quizizz es una web que nos permite crear cuestionarios online que nuestros alumnos pueden responder de tres maneras distintas: En un juego en directo (tipo Kahoot), como tarea (los resultados le llegan al maestro), de manera individual («solo game»).",
-          imageURL: "logoproyectofinal2024.png",
+          imageURL: "imglogo/quizizzlogo.png",
           keyFeatures: [
             "Cuestionarios",
             "Online",
@@ -1130,7 +1150,7 @@
           shortSummary:
             "Está especializada en fomentar la participación de los alumnos con encuestas y chats.",
           fullSummary: "Está especializada en fomentar la participación de los alumnos con encuestas y chats a los que acceden gracias a una aplicación. Las dinámicas de los cuestionarios tienen un límite de tiempo y hay un ranking que gamifica el aprendizaje.",
-          imageURL: "logoproyectofinal2024.png",
+          imageURL: "imglogo/socrativelogo.png",
           keyFeatures: [
             "Participación en clase",
             "Encuestas o Quiz",
@@ -1184,7 +1204,7 @@
             "Aplicación que tiene como función principal mejorar e incluso aprender sobre el idioma que usted quiera.",
           fullSummary:
             "Es una aplicación que tiene como función principal mejorar e incluso aprender sobre el idioma que usted quiera (español, inglés, francés, chino, etc), en este caso se puede utilizar para mejorar la pronunciación y la lectura de palabras en español o en inglés, para que a la hora de exponer o de leer en público, no hayan errores. Es ideal para la secundaria, por la gran cantidad de exposiciones que se tienen en esta etapa y además que siempre viene bien saber hablar. La parte negativa es que se tiene hasta 35 sesiones por mes de instrucción gratuitas con un instructor certificado por la aplicación, luego ya se tendrá que pagar.",
-          imageURL: "logoproyectofinal2024.png",
+          imageURL: "imglogo/speechlinglogo.png",
           keyFeatures: [
             "Aprender idiomas",
             "Desde casa",
@@ -1223,7 +1243,7 @@
             "Aporta herramientas para la creación de grupos, ruletas, cronómetros, contadores, etc.",
           fullSummary:
             "Super Teacher Tools es una plataforma que te permite crear actividades educativas de manera sencilla. A través de un registro gratuito, puedes diseñar dinámicas de juegos como arrastrar y soltar, así como concursos famosos como Jeopardy y “¿Quién quiere ser millonario?”. Además, ofrece herramientas útiles como temporizadores, selección de nombres y organización de grupos.",
-          imageURL: "logoproyectofinal2024.png",
+          imageURL: "imglogo/teachertoollogo.png",
           keyFeatures: [
             "Cuestionarios",
             "Online",
@@ -1267,7 +1287,7 @@
             "Aplicación educativa hecha para probar y mejorar tu conocimiento de los elementos químicos.",
           fullSummary:
             "Es una aplicación educativa hecha para probar y mejorar tu conocimiento de los elementos químicos. Encuentra todos los elementos químicos en la tabla de períodos. Descubra el año del descubrimiento y quién descubrió el elemento. Responda casi 600 preguntas para descubrir la tabla periódica. Es ideal para los primeros años de química y para entrenar y retroalimentar el conocimiento de la tabla periódica, además, utiliza un mapa interactivo que tiene una meta dada.",
-          imageURL: "logoproyectofinal2024.png",
+          imageURL: "imglogo/tablalogo.png",
           keyFeatures: [
             "Química",
             "Aplicación dinámica",
@@ -1316,7 +1336,7 @@
             "Página web dedicada para el aprendizaje y mejora de la dactilografía de las personas.",
           fullSummary:
             "Es una página web dedicada para el aprendizaje y mejora de la dactilografía de las personas. Utiliza un método gamificado, al emplear niveles que son como juegos, por ejemplo, atacar a un monstruo por medio de escribir palabras rápidamente, o también hacer pasar a un ninja de un lugar a otro escribiendo letras rápidamente. Tiene muchos niveles, por lo que la diversión será duradera.",
-          imageURL: "logoproyectofinal2024.png",
+          imageURL: "imglogo/typinglogo.png",
           keyFeatures: [
             "Dactilografía",
             "Informática",
