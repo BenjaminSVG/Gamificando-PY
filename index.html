@@ -1,210 +1,864 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Book Haven</title>
+    <title>Landing Page Interactiva con Objetivo</title>
     <style>
-        * {
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+
+        body, html {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+            height: 100%;
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
         }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f5f7fa;
+        #hero {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
         }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #3498db 100%);
         }
-        header {
-            background: linear-gradient(135deg, #3498db, #2c3e50);
-            color: #fff;
-            padding: 60px 0;
+        .content {
+            position: relative;
+            z-index: 1;
+            color: white;
             text-align: center;
+            padding-top: 20vh;
+            max-width: 800px;
+            margin: 0 auto;
         }
         h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
+            font-size: 4em;
+            margin-bottom: 20px;
+            font-weight: 700;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
-        .tagline {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
+        p {
+            font-size: 1.3em;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+            font-weight: 300;
         }
-        .cta-button {
+        .btn {
             display: inline-block;
-            background-color: #e74c3c;
-            color: #fff;
-            padding: 12px 24px;
-            border-radius: 30px;
+            padding: 12px 30px;
+            background-color: #0038a8;
+            color: white;
             text-decoration: none;
-            font-size: 1.2rem;
-            transition: background-color 0.3s ease, transform 0.3s ease;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
-        .cta-button:hover {
-            background-color: #c0392b;
+        .btn:hover {
+            background-color: #0055ff;
             transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0,0,0,0.15);
         }
-        section {
-            padding: 60px 0;
-        }
-        h2 {
-            font-size: 2.5rem;
-            color: #2c3e50;
-            margin-bottom: 2rem;
+        #objetivo {
+            background-color: #f8f9fa;
+            padding: 80px 0;
             text-align: center;
         }
-        .features {
+        .objetivo-content {
+            max-width: 1000px;
+            margin: 0 auto;
             display: flex;
-            justify-content: center;
+            justify-content: space-around;
             flex-wrap: wrap;
-            gap: 2rem;
+            padding: 0 20px;
         }
-        .feature {
-            background-color: #fff;
-            padding: 1.5rem;
+        .objetivo-item {
+            flex-basis: 30%;
+            margin: 20px;
+            padding: 30px;
+            background-color: white;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-            max-width: 300px;
-            text-align: center;
+            transition: all 0.3s ease;
         }
-        .feature:hover {
+        .objetivo-item:hover {
             transform: translateY(-5px);
+            box-shadow: 0 6px 8px rgba(0,0,0,0.15);
         }
-        .feature h3 {
-            color: #2c3e50;
-            margin-bottom: 0.5rem;
+        .objetivo-item i {
+            font-size: 3em;
+            color: #3498db;
+            margin-bottom: 15px;
         }
-        .feature p {
-            font-size: 0.9rem;
-            color: #34495e;
+        .objetivo-item h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #333;
         }
-        .about {
-            background-color: #ecf0f1;
+        .objetivo-item p {
+            font-size: 1em;
+            color: #666;
         }
-        .about-content {
+        #gamificacion {
+            padding: 80px 0;
+            background-color: #f0f4f8;
+        }
+        .gamificacion-content {
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
             align-items: center;
-            gap: 2rem;
+            justify-content: space-between;
+            flex-wrap: wrap;
         }
-        .about-text {
-            flex: 1;
+        .gamificacion-text {
+            flex-basis: 50%;
+            padding-right: 40px;
         }
-        .about-image {
-            flex: 1;
+        .gamificacion-image {
+            flex-basis: 45%;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .gamificacion-image img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+        .gamificacion-image:hover img {
+            transform: scale(1.05);
+        }
+        .gamificacion-text h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #3498db;
+        }
+        .gamificacion-text p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .gamificacion-feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .gamificacion-feature i {
+            font-size: 1.5em;
+            color: #0038a8;
+            margin-right: 10px;
+        }
+        .progress-bar {
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+        .progress {
+            width: 0;
+            height: 10px;
+            background-color: #0038a8;
+            transition: width 1.5s ease-out;
+        }
+
+        @media (max-width: 768px) {
+            .gamificacion-content {
+                flex-direction: column;
+            }
+            .gamificacion-text, .gamificacion-image {
+                flex-basis: 100%;
+                padding-right: 0;
+                margin-bottom: 40px;
+            }
+        }
+
+        #repositorio {
+            background: linear-gradient(135deg, #3498db 0%, #2575fc 100%);
+            padding: 80px 0;
             text-align: center;
+            color: white;
         }
-        .about-image img {
-            max-width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        .repositorio-content {
+            max-width: 800px;
+            margin: 0 auto;
         }
-        .testimonials {
-            background-color: #3498db;
-            color: #fff;
+        .repositorio-content h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
         }
-        .testimonial {
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 1.5rem;
-            border-radius: 10px;
-            margin-bottom: 1rem;
+        .repositorio-content p {
+            font-size: 1.2em;
+            margin-bottom: 40px;
         }
-        .testimonial-author {
-            font-style: italic;
-            text-align: right;
+        .btn-repositorio {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #0038a8;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-repositorio:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: all 0.5s;
+        }
+        .btn-repositorio:hover:before {
+            left: 100%;
+        }
+        .btn-repositorio:hover {
+            background-color: #0055ff;
+            box-shadow: 0 0 20px rgba(255,255,255,0.5);
+            transform: translateY(-3px);
         }
         footer {
             background-color: #2c3e50;
-            color: #fff;
+            color: #ecf0f1;
+            padding: 50px 0;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .footer-section {
+            flex-basis: 30%;
+            margin-bottom: 20px;
+        }
+        .footer-section h3 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            position: relative;
             text-align: center;
-            padding: 20px 0;
+        }
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 50px;
+            height: 2px;
+            background-color: #0055ff;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .footer-section p, .footer-section ul {
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+        .footer-section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .footer-section ul li {
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .footer-section ul li a {
+            color: #ecf0f1;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 5px 0;
+        }
+        .footer-section ul li a:before {
+            content: '➤';
+            position: absolute;
+            left: -20px;
+            color: #0038a8;
+            font-size: 0.8em;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        .footer-section ul li a:hover {
+            color: #0055ff;
+        }
+        .footer-section ul li a:hover:before {
+            opacity: 1;
+            left: -15px;
+        }
+        .social-icons {
+            display: flex;
+            justify-content: flex-start;
+            margin-top: 20px;
+        }
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: #34495e;
+            color: #ecf0f1;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+        .social-icons a:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .footer-bottom {
+            background-color: #233140;
+            color: #bdc3c7;
+            text-align: center;
+            padding: 15px 0;
+            font-size: 0.8em;
         }
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem;
-            }
-            .tagline {
-                font-size: 1.2rem;
-            }
-            .about-content {
-                flex-direction: column;
+            .footer-section {
+                flex-basis: 100%;
             }
         }
+        @media screen and (max-width: 1200px) {
+            .content, .objetivo-content, .gamificacion-content, .repositorio-content, .footer-content {
+                width: 95%;
+                padding: 0 20px;
+            }
+        }
+
+        @media screen and (max-width: 992px) {
+            h1 {
+                font-size: 3em;
+            }
+            .objetivo-item, .gamificacion-text, .gamificacion-image {
+                flex-basis: 100%;
+            }
+            .gamificacion-image {
+                margin-top: 30px;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+            h2 {
+                font-size: 2em;
+            }
+            p {
+                font-size: 1em;
+            }
+            .content {
+                padding-top: 15vh;
+            }
+            .btn, .btn-repositorio {
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
+            .objetivo-item {
+                margin-bottom: 20px;
+            }
+            .footer-section {
+                flex-basis: 100%;
+                margin-bottom: 30px;
+            }
+            .footer-section ul {
+                width: 100%;
+            }
+
+            .footer-section ul li {
+                width: 100%;
+            }
+
+            .footer-section ul li a {
+                display: inline-block;
+                width: auto;
+            }
+
+            .footer-section ul li a:before {
+                position: relative;
+                left: auto;
+                margin-right: 5px;
+            }
+
+            .footer-section ul li a:hover:before {
+                left: auto;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            p {
+                font-size: 0.9em;
+            }
+            .content {
+                padding-top: 10vh;
+            }
+            .btn, .btn-repositorio {
+                padding: 8px 16px;
+                font-size: 0.8em;
+            }
+            #objetivo, #gamificacion, #repositorio {
+                padding: 40px 0;
+            }
+            .social-icons a {
+                width: 30px;
+                height: 30px;
+                line-height: 30px;
+                font-size: 0.8em;
+            }
+        }
+
+        /* Ajustes específicos para el hero */
+        @media screen and (max-width: 768px) {
+            #hero {
+                height: auto;
+                min-height: 100vh;
+            }
+        }
+
+        /* Ajustes para la sección de gamificación */
+        @media screen and (max-width: 992px) {
+            .gamificacion-content {
+                flex-direction: column;
+            }
+            .gamificacion-text, .gamificacion-image {
+                padding-right: 0;
+            }
+        }
+
+        /* Ajustes para el footer */
+        @media screen and (max-width: 768px) {
+            .footer-content {
+                flex-direction: column;
+            }
+            .footer-section {
+                text-align: center;
+            }
+            .footer-section h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .social-icons {
+                justify-content: center;
+            }
+        }
+        .content, .objetivo-content, .gamificacion-content, .repositorio-content, .footer-content {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        /* Estilos responsive y centralización */
+        @media screen and (max-width: 1200px) {
+            .content, .objetivo-content, .gamificacion-content, .repositorio-content, .footer-content {
+                width: 95%;
+            }
+        }
+
+        @media screen and (max-width: 992px) {
+            h1 {
+                font-size: 3em;
+            }
+            .objetivo-item, .gamificacion-text, .gamificacion-image {
+                flex-basis: 100%;
+                text-align: center;
+            }
+            .gamificacion-image {
+                margin-top: 30px;
+            }
+            .gamificacion-feature {
+                justify-content: center;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+            h2 {
+                font-size: 2em;
+            }
+            p {
+                font-size: 1em;
+            }
+            .content {
+                padding-top: 15vh;
+                text-align: center;
+            }
+            .btn, .btn-repositorio {
+                padding: 10px 20px;
+                font-size: 0.9em;
+                display: inline-block;
+            }
+            .objetivo-item {
+                margin-bottom: 20px;
+                text-align: center;
+            }
+            .footer-section {
+                flex-basis: 100%;
+                margin-bottom: 30px;
+                text-align: center;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            p {
+                font-size: 0.9em;
+            }
+            .content {
+                padding-top: 10vh;
+            }
+            .btn, .btn-repositorio {
+                padding: 8px 16px;
+                font-size: 0.8em;
+            }
+            #objetivo, #gamificacion, #repositorio {
+                padding: 40px 0;
+            }
+            .social-icons {
+                justify-content: center;
+            }
+            .social-icons a {
+                width: 30px;
+                height: 30px;
+                line-height: 30px;
+                font-size: 0.8em;
+            }
+        }
+
+        /* Ajustes específicos para el hero */
+        #hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        /* Ajustes para la sección de gamificación */
+        @media screen and (max-width: 992px) {
+            .gamificacion-content {
+                flex-direction: column;
+                align-items: center;
+            }
+            .gamificacion-text, .gamificacion-image {
+                padding-right: 0;
+                text-align: center;
+            }
+        }
+
+        /* Ajustes para el footer */
+        @media screen and (max-width: 768px) {
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+            }
+            .footer-section {
+                text-align: center;
+            }
+            .footer-section h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .social-icons {
+                justify-content: center;
+            }
+        }
+
+        /* Centralización adicional para todos los elementos */
+        .objetivo-item, .gamificacion-feature, .repositorio-content, .footer-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .objetivo-content, .gamificacion-content {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>Welcome to Book Haven</h1>
-            <p class="tagline">Discover, explore, and find your next great read</p>
-            <a href="repository.html" class="cta-button">Explore Our Collection</a>
+    <section id="hero">
+        <div id="particles-js"></div>
+        <div class="content">
+            <h1>Bienvenido a Gamificando PY</h1>
+            <p>Descubre una potente herramienta para encontrar herramientas destacadas para la gamificación y su uso en clases.</p>
+            <a href="#objetivo" class="btn">Saber más</a>
         </div>
-    </header>
+    </section>
 
-    <section class="features">
-        <div class="container">
-            <h2>Why Choose Book Haven?</h2>
-            <div class="features">
-                <div class="feature">
-                    <h3>Vast Library</h3>
-                    <p>Access thousands of books across various genres and eras</p>
-                </div>
-                <div class="feature">
-                    <h3>Smart Search</h3>
-                    <p>Find books easily with our intuitive search function</p>
-                </div>
-                <div class="feature">
-                    <h3>Book Details</h3>
-                    <p>Get comprehensive information including synopses and publication years</p>
-                </div>
-                <div class="feature">
-                    <h3>Personalized Recommendations</h3>
-                    <p>Discover new books based on your reading preferences</p>
-                </div>
+    <section id="objetivo">
+        <div class="objetivo-content">
+            <div class="objetivo-item">
+                <i class="fas fa-rocket"></i>
+                <h3>Innovación</h3>
+                <p>Impulsamos la innovación en las clases de Paraguay.</p>
+            </div>
+            <div class="objetivo-item">
+                <i class="fas fa-users"></i>
+                <h3>Colaboración</h3>
+                <p>Estas herramientas aumentan la Colaboración y la participación en clase.</p>
+            </div>
+            <div class="objetivo-item">
+                <i class="fa-solid fa-gamepad"></i>
+                <h3>Diversión</h3>
+                <p>Haz que las clases sean divertidas para los estudiantes.</p>
             </div>
         </div>
     </section>
 
-    <section class="about">
-        <div class="container">
-            <h2>About Book Haven</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>Book Haven is more than just a repository; it's a community of book lovers. Our mission is to connect readers with their perfect books, whether they're looking for classic literature, contemporary bestsellers, or hidden gems.</p>
-                    <p>Founded in 2024, we've grown from a small collection to a comprehensive library, always with the goal of making great literature accessible to everyone.</p>
+    <section id="gamificacion">
+        <div class="gamificacion-content">
+            <div class="gamificacion-text">
+                <h2>Gamificación: Aprendizaje Divertido</h2>
+                <p>La gamificación transforma el aprendizaje en una experiencia emocionante y atractiva. Al incorporar elementos de juego en contextos no lúdicos, motivamos a los usuarios a participar activamente y alcanzar sus objetivos.</p>
+                <div class="gamificacion-feature">
+                    <i class="fas fa-trophy"></i>
+                    <span>Sistema de recompensas</span>
                 </div>
-                <div class="about-image">
-                    <img src="https://placehold.co/400x300" alt="Book Haven Library">
+                <div class="gamificacion-feature">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Seguimiento de progreso</span>
                 </div>
+                <div class="gamificacion-feature">
+                    <i class="fas fa-users"></i>
+                    <span>Competencia amistosa</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress" id="gamification-progress"></div>
+                </div>
+            </div>
+            <div class="gamificacion-image">
+                <img src="imglogo/landingimg.png" alt="Gamificación en acción">
             </div>
         </div>
     </section>
 
-    <section class="testimonials">
-        <div class="container">
-            <h2>What Our Users Say</h2>
-            <div class="testimonial">
-                <p>"Book Haven has completely transformed my reading experience. I've discovered so many amazing books I never would have found otherwise!"</p>
-                <p class="testimonial-author">- Sarah J., Avid Reader</p>
-            </div>
-            <div class="testimonial">
-                <p>"The search function is incredibly helpful. I can always find exactly what I'm looking for, whether it's a specific title or just a genre I'm in the mood for."</p>
-                <p class="testimonial-author">- Michael T., Book Enthusiast</p>
-            </div>
+    <section id="repositorio">
+        <div class="repositorio-content">
+            <h2>Explora Nuestro Repositorio de Aplicaciones Gamificadas</h2>
+            <p>Sumérgete en un mundo de aprendizaje interactivo y divertido. Nuestro repositorio está lleno de aplicaciones que transformarán tu experiencia educativa.</p>
+            <a href="repository.html" class="btn-repositorio" id="btnRepositorio">Acceder al Repositorio</a>
         </div>
     </section>
 
     <footer>
-        <div class="container">
-            <p>&copy; 2024 Book Haven. All rights reserved.</p>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Sobre Nosotros</h3>
+                <p>Somos una empresa dedicada a transformar la educación a través de la gamificación, creando experiencias de aprendizaje únicas e innovadoras.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="#hero">Inicio</a></li>
+                    <li><a href="#objetivo">Objetivos</a></li>
+                    <li><a href="#gamificacion">Gamificación</a></li>
+                    <li><a href="#repositorio">Repositorio</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contáctanos</h3>
+                <p>Email: info@gamificacion.com</p>
+                <p>Teléfono: +34 123 456 789</p>
+                <div class="social-icons">
+                    <a href="#" class="social-icon" data-icon="facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon" data-icon="twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon" data-icon="instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon" data-icon="linkedin"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Gamificación Educativa. Todos los derechos reservados.</p>
         </div>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rellax/1.12.1/rellax.min.js"></script>
+    <script>
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 100, density: { enable: true, value_area: 800 } },
+                color: { value: '#ffffff' },
+                shape: { type: 'circle' },
+                opacity: { value: 0.7, random: true },
+                size: { value: 3, random: true },
+                line_linked: { enable: true, distance: 150, color: '#ffffff', opacity: 0.4, width: 1 },
+                move: { enable: true, speed: 3, direction: 'none', random: true, straight: false, out_mode: 'out', bounce: false }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: { onhover: { enable: true, mode: 'bubble' }, onclick: { enable: true, mode: 'push' }, resize: true },
+                modes: { bubble: { distance: 200, size: 5, duration: 0.4 }, push: { particles_nb: 4 } }
+            },
+            retina_detect: true
+        });
+
+        // Efecto parallax
+        var rellax = new Rellax('.content', {
+            speed: -2,
+            center: false,
+            wrapper: null,
+            round: true,
+            vertical: true,
+            horizontal: false
+        });
+
+        // Animación de los elementos del objetivo
+        function isElementInViewport(el) {
+            var rect = el.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+
+        function animateObjetivos() {
+            var items = document.querySelectorAll('.objetivo-item');
+            items.forEach(function(item) {
+                if (isElementInViewport(item)) {
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateY(0)';
+                }
+            });
+        }
+
+        window.addEventListener('scroll', animateObjetivos);
+        window.addEventListener('load', animateObjetivos);
+
+        function animateProgressBar() {
+            const progressBar = document.getElementById('gamification-progress');
+            const gamificationSection = document.getElementById('gamificacion');
+            
+            function isElementInViewport(el) {
+                const rect = el.getBoundingClientRect();
+                return (
+                    rect.top >= 0 &&
+                    rect.left >= 0 &&
+                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+                );
+            }
+
+            function animateProgress() {
+                if (isElementInViewport(gamificationSection)) {
+                    progressBar.style.width = '75%';
+                    window.removeEventListener('scroll', animateProgress);
+                }
+            }
+
+            window.addEventListener('scroll', animateProgress);
+            animateProgress(); // Comprueba la posición inicial
+        }
+
+        window.addEventListener('load', animateProgressBar);
+
+        // Efecto de zoom suave en la imagen de gamificación
+        const gamificationImage = document.querySelector('.gamificacion-image img');
+        gamificationImage.addEventListener('mouseover', () => {
+            gamificationImage.style.transform = 'scale(1.05)';
+        });
+        gamificationImage.addEventListener('mouseout', () => {
+            gamificationImage.style.transform = 'scale(1)';
+        });
+
+        // Efecto de partículas para el botón del repositorio
+        document.getElementById('btnRepositorio').addEventListener('mousemove', function(e) {
+            const x = e.pageX - this.offsetLeft;
+            const y = e.pageY - this.offsetTop;
+            
+            this.style.setProperty('--x', x + 'px');
+            this.style.setProperty('--y', y + 'px');
+        });
+
+        // Animación suave del scroll para el botón "Saber más"
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Efectos para los iconos sociales
+        document.querySelectorAll('.social-icon').forEach(icon => {
+            icon.addEventListener('mouseover', function() {
+                const iconName = this.getAttribute('data-icon');
+                this.style.backgroundColor = getIconColor(iconName);
+            });
+
+            icon.addEventListener('mouseout', function() {
+                this.style.backgroundColor = '#34495e';
+            });
+        });
+
+        function getIconColor(iconName) {
+            const colors = {
+                facebook: '#3b5998',
+                twitter: '#1da1f2',
+                instagram: '#e1306c',
+                linkedin: '#0077b5'
+            };
+            return colors[iconName] || '#34495e';
+        }
+
+        // Animación de entrada para los elementos del footer
+        function animateFooterElements() {
+            const footerSections = document.querySelectorAll('.footer-section');
+            footerSections.forEach((section, index) => {
+                setTimeout(() => {
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                }, 200 * index);
+            });
+        }
+
+        window.addEventListener('load', () => {
+            const footerSections = document.querySelectorAll('.footer-section');
+            footerSections.forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'all 0.5s ease';
+            });
+            animateFooterElements();
+        });
+
+    </script>
 </body>
 </html>
