@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GAMIFICANDO PY</title>
+    <title>Gamificando PY repositorio</title>
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
       * {
@@ -135,6 +135,8 @@
         margin-bottom: 30px;
       }
       .game {
+        display: flex;
+        flex-direction: column;
         background-color: #fff;
         border-radius: 10px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -172,7 +174,6 @@
       .game-cover img {
         width: 100%;
         height: 100%;
-        
         transition: transform 0.3s ease;
       }
 
@@ -182,6 +183,7 @@
 
       .game-info {
         padding: 20px;
+        flex-grow: 1;
       }
       .game-title {
         font-size: 1.2rem;
@@ -228,6 +230,19 @@
         #gameList {
           grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
         }
+      }
+      .view-more {
+        background-color: #f0f4f8;
+        color: #3498db;
+        text-align: center;
+        padding: 10px;
+        font-size: 0.9rem;
+        border-radius: 0 0 10px 10px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+      .game:hover .view-more {
+        background-color: #3498db;
+        color: #fff;
       }
     </style>
   </head>
@@ -362,7 +377,7 @@
         {
           title: "ClassDojo",
           author:
-            "Ron Conway, Mitch Kapor, Jeff Clavier, General Catalyst y Paul Graham",
+            "Sam Chaudhary y Liam Don",
           year: 2011,
           shortSummary:
             "Es una plataforma en web y en app fácil de usar y pensada para niños. Este ejemplo de gamificación implica a los alumnos y conecta a las familias con los logros de sus hijos.",
@@ -1511,6 +1526,7 @@
                         <div class="game-year">${game.year}</div>
                         <div class="game-synopsis">${game.shortSummary}</div>
                     </div>
+                    <div class="view-more">Ver más</div>
                 `;
           li.addEventListener("click", () => {
             const gameData = {
