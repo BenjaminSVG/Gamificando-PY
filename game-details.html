@@ -1,499 +1,506 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Detalles</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
-        
-        :root {
-            --primary-color: #3498db;
-            --secondary-color: #83b3ed;
-            --background-color: #ecf0f1;
-            --text-color: #34495e;
-            --header-color: #2c3e50;
-        }
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: var(--background-color);
-        }
-        
-        header {
-            text-align: center;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 2rem 2rem 3rem;
-            border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
-        }
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
 
-        h1 {
-            font-size: 2.5rem;
-            margin: 0 0 1.5rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
+      :root {
+        --primary-color: #3498db;
+        --secondary-color: #83b3ed;
+        --background-color: #ecf0f1;
+        --text-color: #34495e;
+        --header-color: #2c3e50;
+      }
 
-        nav {
-            display: flex;
-            justify-content: center;
-        }
+      body {
+        font-family: "Poppins", sans-serif;
+        line-height: 1.6;
+        color: var(--text-color);
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: var(--background-color);
+      }
 
-        .menu-button {
-            background-color: white;
-            color: var(--primary-color);
-            border: none;
-            padding: 12px 25px;
-            border-radius: 25px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
+      header {
+        text-align: center;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color),
+          var(--secondary-color)
+        );
+        color: white;
+        padding: 2rem 2rem 3rem;
+        border-radius: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px;
+      }
 
-        .menu-button:hover {
-            background-color: var(--secondary-color);
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 8px rgba(0,0,0,0.15);
-        }
+      h1 {
+        font-size: 2.5rem;
+        margin: 0 0 1.5rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
 
-        .menu-button:active {
-            transform: translateY(0);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        section {
-            background-color: white;
-            margin: 30px 0;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-        
-        section:hover {
-            transform: translateY(-5px);
-        }
-        
-        h2 {
-            color: var(--header-color);
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 10px;
-            margin-top: 0;
-        }
-        
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
-        
-        .info-item {
-            background-color: #f8f9fa;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-        
-        .info-item strong {
-            color: var(--primary-color);
-            font-weight: 600;
-        }
-        
-        .tutorial-step h3 {
-            color: var(--secondary-color);
-            margin-top: 0;
-        }
-        
-        .tutorial-step p {
-            margin-bottom: 0;
-        }
-        
-        .features-list {
-            list-style-type: none;
-            padding: 0;
-        }
-        
-        .features-list li {
-            margin-bottom: 15px;
-            padding-left: 25px;
-            position: relative;
-        }
-        
-        .features-list li::before {
-            content: '✓';
-            color: var(--secondary-color);
-            position: absolute;
-            left: 0;
-            top: 2px;
-            font-weight: bold;
-        }
-        
-        .game-cover {
-            text-align: center;
-            margin-top: 20px;
-            max-width: 100%;
-            height: auto;
-        }
+      nav {
+        display: flex;
+        justify-content: center;
+      }
 
+      .menu-button {
+        background-color: white;
+        color: var(--primary-color);
+        border: none;
+        padding: 12px 25px;
+        border-radius: 25px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .menu-button:hover {
+        background-color: var(--secondary-color);
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+      }
+
+      .menu-button:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      section {
+        background-color: white;
+        margin: 30px 0;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+
+      section:hover {
+        transform: translateY(-5px);
+      }
+
+      h2 {
+        color: var(--header-color);
+        border-bottom: 2px solid var(--primary-color);
+        padding-bottom: 10px;
+        margin-top: 0;
+      }
+
+      .info-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+
+      .info-item {
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
+
+      .info-item strong {
+        color: var(--primary-color);
+        font-weight: 600;
+      }
+
+      .tutorial-step h3 {
+        color: var(--secondary-color);
+        margin-top: 0;
+      }
+
+      .tutorial-step p {
+        margin-bottom: 0;
+      }
+
+      .features-list {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      .features-list li {
+        margin-bottom: 15px;
+        padding-left: 25px;
+        position: relative;
+      }
+
+      .features-list li::before {
+        content: "✓";
+        color: var(--secondary-color);
+        position: absolute;
+        left: 0;
+        top: 2px;
+        font-weight: bold;
+      }
+
+      .game-cover {
+        text-align: center;
+        margin-top: 20px;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .game-cover img {
+        max-width: 100%;
+        max-height: 300px;
+        object-fit: contain;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.3s ease, transform 0.3s ease;
+      }
+
+      .game-cover img:hover {
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        transform: translateY(-5px);
+      }
+
+      @media (min-width: 768px) {
         .game-cover img {
-            max-width: 100%;
-            max-height: 300px;
-            object-fit: contain;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: box-shadow 0.3s ease, transform 0.3s ease;
+          max-height: 400px;
         }
+      }
 
-        .game-cover img:hover {
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-            transform: translateY(-5px);
+      @media (max-width: 600px) {
+        .info-grid {
+          grid-template-columns: 1fr;
         }
+      }
 
-        @media (min-width: 768px) {
-            .game-cover img {
-                max-height: 400px;
-            }
-        }
-        
-        @media (max-width: 600px) {
-            .info-grid {
-                grid-template-columns: 1fr;
-            }
-        }
+      .tutorial-step {
+        display: flex;
+        align-items: center;
+        margin-bottom: 25px;
+        padding: 20px;
+        background-color: #f8f9fa;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
 
+      .tutorial-content {
+        flex: 1;
+        padding-right: 20px;
+      }
+
+      .tutorial-image {
+        width: 200px; /* Tamaño preestablecido */
+        max-width: 100%;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+      }
+
+      .tutorial-image.has-image {
+        cursor: pointer;
+        transition: transform 0.3s ease;
+      }
+
+      .tutorial-image:hover {
+        transform: scale(1.05);
+      }
+
+      .tutorial-image img {
+        max-width: 100%;
+        height: auto;
+        object-fit: contain;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+
+      .tutorial-image.has-image img:active {
+        transform: scale(0.95);
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        overflow: auto;
+      }
+
+      .modal-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.1);
+        max-width: 90%;
+        max-height: 90vh;
+        object-fit: contain;
+        opacity: 0;
+        transition: all 0.3s ease-in-out;
+      }
+
+      .modal-content.show {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+      }
+
+      .close {
+        position: absolute;
+        top: 15px;
+        right: 35px;
+        color: #f1f1f1;
+        font-size: 40px;
+        font-weight: bold;
+        transition: 0.3s;
+        z-index: 1001;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: #bbb;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      @media (max-width: 600px) {
         .tutorial-step {
-            display: flex;
-            align-items: center;
-            margin-bottom: 25px;
-            padding: 20px;
-            background-color: #f8f9fa;
-            border-radius: 10px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-
-        .tutorial-content {
-            flex: 1;
-            padding-right: 20px;
-        }
-
-        .tutorial-image {
-            width: 200px; /* Tamaño preestablecido */
-            max-width: 100%;
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .tutorial-image.has-image {
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .tutorial-image:hover {
-            transform: scale(1.05);
-        }
-
-        .tutorial-image img {
-            max-width: 100%;
-            height: auto;
-            object-fit: contain;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .tutorial-image.has-image img:active {
-            transform: scale(0.95);
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.9);
-            overflow: auto;
-        }
-
-        .modal-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0.1);
-            max-width: 90%;
-            max-height: 90vh;
-            object-fit: contain;
-            opacity: 0;
-            transition: all 0.3s ease-in-out;
-        }
-
-        .modal-content.show {
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(1);
+          flex-direction: column;
         }
 
         .close {
-            position: absolute;
-            top: 15px;
-            right: 35px;
-            color: #f1f1f1;
-            font-size: 40px;
-            font-weight: bold;
-            transition: 0.3s;
-            z-index: 1001;
+          top: 10px;
+          right: 20px;
+          font-size: 30px;
         }
 
-        .close:hover,
-        .close:focus {
-            color: #bbb;
-            text-decoration: none;
-            cursor: pointer;
+        .tutorial-image {
+          width: 100%;
+          max-width: 100%;
+          max-height: 200px; /* Limita la altura en móviles */
         }
 
-        @media (max-width: 600px) {
-            .tutorial-step {
-                flex-direction: column;
-            }
-
-            .close {
-                top: 10px;
-                right: 20px;
-                font-size: 30px;
-            }
-
-            .tutorial-image {
-                width: 100%;
-                max-width: 100%;
-                max-height: 200px; /* Limita la altura en móviles */
-            }
-            
-            .tutorial-image img {
-                max-height: 100%;
-                object-fit: contain;
-            }
+        .tutorial-image img {
+          max-height: 100%;
+          object-fit: contain;
         }
+      }
 
-        #summary {
-            background-color: white;
-            margin: 30px 0;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
+      #summary {
+        background-color: white;
+        margin: 30px 0;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
 
-        #gameSummary {
-            line-height: 1.8;
-            text-align: justify;
-        }
+      #gameSummary {
+        line-height: 1.8;
+        text-align: justify;
+      }
+      #scrollToTopBtn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        font-size: 24px;
+        cursor: pointer;
+        opacity: 0;
+        transition: opacity 0.3s, background-color 0.3s;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+      }
+
+      #scrollToTopBtn:hover {
+        background-color: var(--secondary-color);
+      }
+
+      #scrollToTopBtn.show {
+        opacity: 1;
+      }
+
+      @media (max-width: 600px) {
         #scrollToTopBtn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            font-size: 24px;
-            cursor: pointer;
-            opacity: 0;
-            transition: opacity 0.3s, background-color 0.3s;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-            z-index: 1000;
+          width: 40px;
+          height: 40px;
+          font-size: 20px;
+          bottom: 10px;
+          right: 10px;
         }
-
-        #scrollToTopBtn:hover {
-            background-color: var(--secondary-color);
-        }
-
-        #scrollToTopBtn.show {
-            opacity: 1;
-        }
-
-        @media (max-width: 600px) {
-            #scrollToTopBtn {
-                    width: 40px;
-                    height: 40px;
-                    font-size: 20px;
-                    bottom: 10px;
-                    right: 10px;
-            }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <h1 id="gameTitle">Nombre de la aplicación</h1>
-        <nav>
-            <button class="menu-button" onclick="window.history.back()">Volver al Menú</button>
-        </nav>
+      <h1 id="gameTitle">Nombre de la aplicación</h1>
+      <nav>
+        <button class="menu-button" onclick="window.history.back()">
+          Volver al Menú
+        </button>
+      </nav>
     </header>
 
     <section id="info">
-        <h2>Información de la Aplicación</h2>
-        <div class="info-grid">
-            <div class="info-item">
-                <strong>Creador/es:</strong> <span id="gameAuthor"></span>
-            </div>
-            <div class="info-item">
-                <strong>Año:</strong> <span id="gameYear"></span>
-            </div>
+      <h2>Información de la Aplicación</h2>
+      <div class="info-grid">
+        <div class="info-item">
+          <strong>Creador/es:</strong> <span id="gameAuthor"></span>
         </div>
-        <div class="game-cover">
-            <img id="gameCover" src="" alt="Game Cover">
+        <div class="info-item">
+          <strong>Año:</strong> <span id="gameYear"></span>
         </div>
+      </div>
+      <div class="game-cover">
+        <img id="gameCover" src="" alt="Game Cover" />
+      </div>
     </section>
 
     <section id="summary">
-        <h2>Descripción</h2>
-        <p id="gameSummary"></p>
+      <h2>Descripción</h2>
+      <p id="gameSummary"></p>
     </section>
 
     <section id="features">
-        <h2>Temas</h2>
-        <ul class="features-list" id="keyFeatures">
-            <!-- Features will be populated dynamically -->
-        </ul>
+      <h2>Temas</h2>
+      <ul class="features-list" id="keyFeatures">
+        <!-- Features will be populated dynamically -->
+      </ul>
     </section>
 
     <section id="tutorial">
-        <h2>Tutorial</h2>
-        <div id="tutorialSteps">
-            <!-- Tutorial steps will be populated dynamically -->
-        </div>
+      <h2>Tutorial</h2>
+      <div id="tutorialSteps">
+        <!-- Tutorial steps will be populated dynamically -->
+      </div>
     </section>
 
     <div id="imageModal" class="modal">
-        <span class="close">&times;</span>
-        <img class="modal-content" id="modalImage">
+      <span class="close">&times;</span>
+      <img class="modal-content" id="modalImage" />
     </div>
 
     <button id="scrollToTopBtn" title="Volver arriba">↑</button>
 
     <script>
-        // Get the encoded data from URL
-        const encodedData = new URLSearchParams(window.location.search).get('data');
-        const gameData = JSON.parse(decodeURIComponent(encodedData));
+      // Get the encoded data from URL
+      const encodedData = new URLSearchParams(window.location.search).get(
+        "data"
+      );
+      const gameData = JSON.parse(decodeURIComponent(encodedData));
 
-        // Populate the page with book details
-        document.getElementById('gameTitle').textContent = gameData.title;
-        document.getElementById('gameAuthor').textContent = gameData.author;
-        document.getElementById('gameYear').textContent = gameData.year;
-        document.getElementById('gameSummary').textContent = gameData.summary;
-        document.getElementById('gameCover').src = gameData.imageURL;
+      // Populate the page with book details
+      document.getElementById("gameTitle").textContent = gameData.title;
+      document.getElementById("gameAuthor").textContent = gameData.author;
+      document.getElementById("gameYear").textContent = gameData.year;
+      document.getElementById("gameSummary").textContent = gameData.summary;
+      document.getElementById("gameCover").src = gameData.imageURL;
 
-        // Update the page title
-        document.title = gameData.title + ' - Detalles';
+      // Update the page title
+      document.title = gameData.title + " - Detalles";
 
-        // Populate key features
-        const featuresList = document.getElementById('keyFeatures');
-        gameData.keyFeatures.forEach(feature => {
-            const li = document.createElement('li');
-            li.textContent = feature;
-            featuresList.appendChild(li);
-        });
+      // Populate key features
+      const featuresList = document.getElementById("keyFeatures");
+      gameData.keyFeatures.forEach((feature) => {
+        const li = document.createElement("li");
+        li.textContent = feature;
+        featuresList.appendChild(li);
+      });
 
-        // Populate tutorial steps
-        const tutorialStepsContainer = document.getElementById('tutorialSteps');
-        gameData.tutorialSteps.forEach(step => {
-            const div = document.createElement('div');
-            div.className = 'tutorial-step';
-            
-            let imageHtml = '';
-            if (step.imageUrl) {
-                imageHtml = `
+      // Populate tutorial steps
+      const tutorialStepsContainer = document.getElementById("tutorialSteps");
+      gameData.tutorialSteps.forEach((step) => {
+        const div = document.createElement("div");
+        div.className = "tutorial-step";
+
+        let imageHtml = "";
+        if (step.imageUrl) {
+          imageHtml = `
                     <div class="tutorial-image has-image">
                         <img src="${step.imageUrl}" alt="" loading="lazy">
                     </div>
                 `;
-            } else {
-                imageHtml = `<div class="tutorial-image"></div>`;
-            }
+        } else {
+          imageHtml = `<div class="tutorial-image"></div>`;
+        }
 
-            div.innerHTML = `
+        div.innerHTML = `
                 <div class="tutorial-content">
                     <h3>${step.title}</h3>
                     <p>${step.description}</p>
                 </div>
                 ${imageHtml}
             `;
-            tutorialStepsContainer.appendChild(div);
+        tutorialStepsContainer.appendChild(div);
+      });
+
+      const modal = document.getElementById("imageModal");
+      const modalImg = document.getElementById("modalImage");
+      const closeBtn = document.getElementsByClassName("close")[0];
+
+      document.querySelectorAll(".tutorial-image img").forEach((img) => {
+        img.addEventListener("click", function () {
+          modal.style.display = "block";
+          modalImg.src = this.src;
+          setTimeout(() => {
+            modalImg.classList.add("show");
+          }, 10);
         });
+      });
 
-        const modal = document.getElementById('imageModal');
-        const modalImg = document.getElementById('modalImage');
-        const closeBtn = document.getElementsByClassName('close')[0];
+      function closeModal() {
+        modalImg.classList.remove("show");
+        setTimeout(() => {
+          modal.style.display = "none";
+        }, 300);
+      }
 
-        document.querySelectorAll('.tutorial-image img').forEach(img => {
-            img.addEventListener('click', function() {
-                modal.style.display = "block";
-                modalImg.src = this.src;
-                setTimeout(() => {
-                    modalImg.classList.add('show');
-                }, 10);
-            });
-        });
+      closeBtn.addEventListener("click", function () {
+        modal.style.display = "none";
+      });
 
-        function closeModal() {
-            modalImg.classList.remove('show');
-            setTimeout(() => {
-                modal.style.display = "none";
-            }, 300);
+      modal.addEventListener("click", function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
         }
+      });
 
-        closeBtn.addEventListener('click', function() {
-            modal.style.display = "none";
-        });
+      // Close modal on escape key press
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+          modal.style.display = "none";
+        }
+      });
 
-        modal.addEventListener('click', function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        });
+      // Scroll to top functionality
+      const scrollToTopBtn = document.getElementById("scrollToTopBtn");
 
-        // Close modal on escape key press
-        document.addEventListener('keydown', function(event) {
-            if (event.key === "Escape") {
-                modal.style.display = "none";
-            }
-        });
-
-        // Scroll to top functionality
-        const scrollToTopBtn = document.getElementById("scrollToTopBtn");
-
-        window.addEventListener("scroll", () => {
+      window.addEventListener("scroll", () => {
         if (window.pageYOffset > 300) {
-            scrollToTopBtn.classList.add("show");
+          scrollToTopBtn.classList.add("show");
         } else {
-            scrollToTopBtn.classList.remove("show");
+          scrollToTopBtn.classList.remove("show");
         }
-        });
+      });
 
-        scrollToTopBtn.addEventListener("click", () => {
+      scrollToTopBtn.addEventListener("click", () => {
         window.scrollTo({
-            top: 0,
-            behavior: "smooth"
+          top: 0,
+          behavior: "smooth",
         });
-        });
-
+      });
     </script>
-</body>
+  </body>
 </html>
