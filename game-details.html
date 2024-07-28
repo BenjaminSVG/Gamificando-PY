@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="GamificandoPYOficial.png">
     <title>Detalles</title>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
@@ -341,6 +342,42 @@
           right: 10px;
         }
       }
+      #video-section {
+        background-color: white;
+        margin: 30px 0;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+      #video-section:hover {
+        transform: translateY(-5px);
+      }
+      .video-container {
+        position: relative;
+        width: 100%;
+        padding-top: 56.25%; /* 16:9 Aspect Ratio */
+      }
+      #game-video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+      .video-placeholder {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #f0f0f1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.2rem;
+        color: var(--text-color);
+      }
     </style>
   </head>
   <body>
@@ -378,6 +415,14 @@
       <ul class="features-list" id="keyFeatures">
         <!-- Features will be populated dynamically -->
       </ul>
+    </section>
+
+    <section id="video-section">
+      <h2>Video Demostrativo</h2>
+      <div class="video-container">
+        <iframe id="game-video" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Video no disponible</div>
+      </div>
     </section>
 
     <section id="tutorial">
@@ -446,21 +491,6 @@
         tutorialStepsContainer.appendChild(div);
       });
 
-      // Update favicon
-      if (gameData.imageURL) {
-        const link = document.querySelector("link[rel~='icon']") || document.createElement('link');
-        link.type = 'image/x-icon';
-        link.rel = 'shortcut icon';
-        link.href = gameData.imageURL;
-        document.getElementsByTagName('head')[0].appendChild(link);
-      } else {
-        const link = document.querySelector("link[rel~='icon']") || document.createElement('link');
-        link.type = 'image/x-icon';
-        link.rel = 'shortcut icon';
-        link.href = GamificandoPYOficial.png;
-        document.getElementsByTagName('head')[0].appendChild(link);
-      }
-
       const modal = document.getElementById("imageModal");
       const modalImg = document.getElementById("modalImage");
       const closeBtn = document.getElementsByClassName("close")[0];
@@ -509,6 +539,104 @@
           scrollToTopBtn.classList.remove("show");
         }
       });
+
+      const videoContainer = document.querySelector('.video-container');
+      const videoFrame = document.getElementById('game-video');
+      const videoPlaceholder = document.querySelector('.video-placeholder');
+
+      function loadGameVideo(gameTitle) {
+        let videoUrl = '';
+
+        switch (gameTitle) {
+          case "Brainscape":
+            videoUrl = "https://www.youtube.com/embed/OExuBopeVA0";
+            break;
+          case "Cerebriti":
+            videoUrl = "https://www.youtube.com/embed/wMsxzpQCvVk?si=rZf9dOSF6MLoahK-";
+            break;
+          case "ClassDojo":
+            videoUrl = "https://www.youtube.com/embed/ioIT0Z1GzoA";
+            break;
+          case "Codewars":
+            videoUrl = "https://www.youtube.com/embed/oMUKkZMdlbk?si=yi7NhgmHD4C-tHSO";
+            break;
+          case "Duolingo":
+            videoUrl = "https://www.youtube.com/embed/u2UAVrPci_Y?si=WHGyCs8YIRD8w4vN";
+            break;
+          case "Educaplay":
+            videoUrl = "https://www.youtube.com/embed/ZRkZ9-DPaj0?si=fRmMA_j91S1y-xHg";
+            break;
+          case "Flexbox Froggy":
+            videoUrl = "https://www.youtube.com/embed/eW628sJkuhs?si=HFKLSKpiZsZnbA-9";
+            break;
+          case "Genially":
+            videoUrl = "https://www.youtube.com/embed/BMIOfqM4Tho?si=l0U6xBe05wwwBetY";
+            break;
+          case "iCuadernos Rubio":
+            videoUrl = "https://www.youtube.com/embed/_XQ2BomcsRk?si=QKdEY1n_fIr9kp4m";
+            break;
+          case "Kahoot":
+            videoUrl = "https://www.youtube.com/embed/kz8qc-XMM74?si=xpZUkEljizHZIxcN";
+            break;
+          case "Kimen":
+            videoUrl = "https://www.youtube.com/embed/bORbGEF-__w?si=L6XNZZmRcyKbcPkl";
+            break;
+          case "Mentimeter":
+            videoUrl = "https://www.youtube.com/embed/Vx59Ilgd2oc?si=vE_ACeNj6d6Jzsui";
+            break;
+          case "Minecraft Education":
+            videoUrl = "https://www.youtube.com/embed/In2LcDqXaYE?si=-7z5eo-hbic4257h";
+            break;
+          case "Pear Deck":
+            videoUrl = "https://www.youtube.com/embed/EkMoYhfSlfM?si=WImGNASWWot79wqb";
+            break;
+          case "Plickers":
+            videoUrl = "https://www.youtube.com/embed/FrSLEAuN--Y?si=aIruLg7dGPAZ0WUu";
+            break;
+          case "Pear Deck":
+            videoUrl = "https://www.youtube.com/embed/FrSLEAuN--Y?si=aIruLg7dGPAZ0WUu";
+            break;
+          case "Poll Everywhere":
+            videoUrl = "https://www.youtube.com/embed/PNe6mdNKD5w?si=mkbKzfrO0hKWbNwd";
+            break;
+          case "Quiz Fórmulas Químicas":
+            videoUrl = "https://www.youtube.com/embed/ncuvhYE7Jpo?si=mzd_EmgYfybtFqva";
+            break;
+          case "Quizizz":
+            videoUrl = "https://www.youtube.com/embed/0-Em3Lathq4?si=AGNIMaU2uZnp6OlW";
+            break;
+          case "Socrative":
+            videoUrl = "https://www.youtube.com/embed/tqw5YBHnSc0?si=wLp38SY1v-WqjH_n";
+            break;
+          case "Speechling":
+            videoUrl = "https://www.youtube.com/embed/8-D7t5c0rxg?si=840szBbVgZqMuQkl";
+            break;
+          case "SuperTeacherTools":
+            videoUrl = "https://www.youtube.com/embed/AtcIDfyFF3s?si=Nr5fjvkUq0u8K0Xs";
+            break;
+          case "Tabla Periódica – Game":
+            videoUrl = "https://www.youtube.com/embed/Fqkze1Wfm2o?si=pjuz2woeZhSBMhUg";
+            break;
+          case "Typing Club":
+            videoUrl = "https://www.youtube.com/embed/UPaZnGgfBck?si=f79UXAIOjWhUSOmk";
+            break;
+          default:
+            videoUrl = '';
+        }
+
+        if (videoUrl) {
+          videoFrame.src = videoUrl;
+          videoPlaceholder.style.display = 'none';
+          videoFrame.style.display = 'block';
+        } else {
+          videoFrame.src = '';
+          videoPlaceholder.style.display = 'flex';
+          videoFrame.style.display = 'none';
+        }
+      }
+
+      // Llama a esta función cuando se cargue la página
+      loadGameVideo(gameData.title);
 
       scrollToTopBtn.addEventListener("click", () => {
         window.scrollTo({
