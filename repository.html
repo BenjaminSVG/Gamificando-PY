@@ -224,6 +224,73 @@
         background-color: #3498db;
         color: #fff;
       }
+      .filter-buttons {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+      .filter-btn {
+        background-color: #f0f4f8;
+        border: 2px solid #3498db;
+        color: #3498db;
+        padding: 8px 16px;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+      }
+      .filter-btn:hover {
+        background-color: #e6eef5;
+      }
+      .filter-btn.active {
+        background-color: #3498db;
+        color: #fff;
+      }
+      .checkmark {
+        margin-right: 5px;
+        font-weight: bold;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      .filter-btn.active .checkmark {
+        opacity: 1;
+      }
+      #scrollToTopBtn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        background-color: #3498db;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        font-size: 24px;
+        cursor: pointer;
+        opacity: 0;
+        transition: opacity 0.3s, background-color 0.3s;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+      }
+      #scrollToTopBtn:hover {
+        background-color: #3498db;
+      }
+      #scrollToTopBtn.show {
+        opacity: 1;
+      }
+      @media (max-width: 600px) {
+        #scrollToTopBtn {
+          width: 40px;
+          height: 40px;
+          font-size: 20px;
+          bottom: 10px;
+          right: 10px;
+        }
+      }
     </style>
   </head>
   <body>
@@ -242,6 +309,20 @@
             </div>
             <h1>Colección de aplicaciones gamificadas</h1>
             <input type="text" id="search" placeholder="Busca la aplicación..." />
+            <div class="filter-buttons">
+              <button class="filter-btn" data-filter="Gratis">
+                <span class="checkmark">✓</span> Gratis
+              </button>
+              <button class="filter-btn" data-filter="Interacción">
+                <span class="checkmark">✓</span> Interacción
+              </button>
+              <button class="filter-btn" data-filter="Fácil">
+                <span class="checkmark">✓</span> Fácil
+              </button>
+              <button class="filter-btn" data-filter="Cuestionarios">
+                <span class="checkmark">✓</span> Cuestionarios
+              </button>
+            </div>
         </header>
       <ul id="gameList"></ul>
       <div class="pagination">
@@ -251,6 +332,8 @@
         <button>4</button>
       </div>
     </div>
+
+    <button id="scrollToTopBtn" title="Volver arriba">↑</button>
 
     <script>
       const games = [
@@ -267,7 +350,9 @@
             "Dinámico",
             "Online",
             "Práctico",
-            "Participación en clase",
+            "Cuestionarios",
+            "Interacción",
+            "Gratis",
           ],
           tutorialSteps: [
             {
@@ -312,10 +397,11 @@
           imageURL: "imglogo/cerebritilogo.PNG",
           keyFeatures: [
             "Múltiples juegos",
-            "Online",
+            "Cuestionarios",
             "Práctico",
             "Dinámico",
             "Gratis",
+            "Fácil",
           ],
           tutorialSteps: [
             {
@@ -366,8 +452,9 @@
           keyFeatures: [
             "Tareas virtuales",
             "Control de tareas",
-            "Emblemas positivos y negativos a alumnos",
             "Conectar con Google Classroom",
+            "Gratis",
+            "Interacción",
           ],
           tutorialSteps: [
             {
@@ -427,6 +514,7 @@
             "Desafíos de programación",
             "Informática",
             "Aprendizaje en comunidad",
+            "Gratis",
           ],
           tutorialSteps: [
             {
@@ -497,9 +585,11 @@
           imageURL: "imglogo/duolingologo.PNG",
           keyFeatures: [
             "Aprendizaje desde casa",
-            "Encuestas o Quiz",
+            "Cuestionarios",
             "Aprender idiomas",
             "Diversión",
+            "Gratis y de paga",
+            "Fácil",
           ],
           tutorialSteps: [
             {
@@ -549,11 +639,12 @@
             "Educaplay es una plataforma educativa que permite crear y compartir actividades multimedia y juegos de tipo educativo fácilmente y de forma muy intuitiva. Educaplay es gratuita, por lo que puedes aportar un gran valor pedagógico sin ningún coste. Si quieres ir a un nivel superior en la creación de tus actividades y juegos Educaplay ofrece un servicio premium en el que obtienes una serie de ventajas y opciones, pero para un uso básico con el gratuito es suficiente.",
           imageURL: "imglogo/educaplaylogo.PNG",
           keyFeatures: [
-            "Participación en clase",
             "Online",
             "Diversión",
-            "Dinámico",
-            "Múltiples funciones",
+            "Cuestionarios",
+            "Gratis",
+            "Fácil",
+            "Interacción",
           ],
           tutorialSteps: [
             {
@@ -604,6 +695,8 @@
             "Desafíos de programación CSS",
             "Informática",
             "Diversión",
+            "Gratis",
+            "Fácil",
           ],
           tutorialSteps: [
             {
@@ -657,10 +750,11 @@
             "Se trata de una herramienta gratuita y online, para usar desde nuestro navegador favorito, donde solo es necesario crear una cuenta de usuario. Las creaciones se pueden compartir fácilmente en redes sociales, correo electrónico o WhatsApp entre otras. La plataforma permite integrar todo tipo de recursos: imágenes en redes sociales, audio, contenidos de Twitter, de Facebook o de cualquier otra red social.",
           imageURL: "imglogo/geniallylogo.PNG",
           keyFeatures: [
-            "Participación en clase",
+            "Interacción",
             "Presentaciones gamificadas",
             "Gratis y de paga",
             "Diversión",
+            "Fácil",
           ],
           tutorialSteps: [
             {
@@ -768,10 +862,12 @@
             "Es una app de quiz y concursos de preguntas y respuestas. Se trata de una herramienta muy fácil de usar. El factor de la competitividad y el ranking final cuando se finaliza el test hacen de esta aplicación un juego muy divertido. En definitiva, es una herramienta perfecta para evaluar todos juntos lo aprendido al finalizar un temario en cualquier nivel educativo, como puede ser secundaria o también universidad (si se da el caso).",
           imageURL: "imglogo/kahootlogo.PNG",
           keyFeatures: [
-            "Participación en clase",
-            "Encuestas o Quiz",
+            "Interacción",
+            "Cuestionarios",
             "Para todo nivel educativo",
             "Diversión",
+            "Gratis y de paga",
+            "Fácil",
           ],
           tutorialSteps: [
             {
@@ -831,7 +927,7 @@
           fullSummary:
             "Un simulador gamificado de proyectos de aprendizaje que permite a docentes y estudiantes desarrollar un conjunto de habilidades fundamentales para desenvolverse en el exigente mundo de hoy. Kimen es un completo conjunto de proyectos de aprendizaje, donde los/as docentes y estudiantes vivirán una experiencia educativa interactiva y entretenida, enfrentando diversos desafíos que promueven un aprendizaje efectivo y significativo.",
           imageURL: "imglogo/kimenlogo.PNG",
-          keyFeatures: ["Simulación", "Proyectos", "Dinámico", "Juego"],
+          keyFeatures: ["Simulación", "Proyectos", "Dinámico", "Juego", "Interacción"],
           tutorialSteps: [
             {
               title: "Paso 1: Acceso",
@@ -982,10 +1078,11 @@
           imageURL: "imglogo/pearlogo.PNG",
           keyFeatures: [
             "Monitoreo",
-            "Encuestas y creación de juegos",
+            "Cuestionarios",
             "Fácil",
-            "Gratuito y de paga",
+            "Gratis y de paga",
             "Microeducación",
+            "Interacción",
           ],
           tutorialSteps: [
             {
@@ -1040,10 +1137,12 @@
             "Evaluar al alumnado de forma lúdica, obteniendo los resultados de sus pruebas en tiempo real y convirtiendo el aprendizaje en un juego. Esta es la función de Plickers, una herramienta que emplea la realidad aumentada y puede utilizarse desde la página web o desde la app para smartphones y tablets Android e iOS.",
           imageURL: "imglogo/plickerslogo.PNG",
           keyFeatures: [
-            "Quiz o preguntas",
-            "Participación en clase",
-            "Fácil y sin internet",
+            "Cuestionarios",
+            "Interacción",
+            "Sin internet",
             "Práctico",
+            "Gratis",
+            "Fácil",
           ],
           tutorialSteps: [
             {
@@ -1088,8 +1187,8 @@
           keyFeatures: [
             "Cuestionarios",
             "Online",
-            "Tiempo real",
             "Dinámico",
+            "Interacción",
             "Gratis y de paga",
           ],
           tutorialSteps: [
@@ -1128,9 +1227,11 @@
           imageURL: "imglogo/quizquimicalogo.PNG",
           keyFeatures: [
             "Aprende desde casa",
-            "Encuestas o Quiz",
+            "Cuestionarios",
             "Química",
             "Diversión",
+            "Gratis",
+            "Fácil",
           ],
           tutorialSteps: [
             {
@@ -1168,9 +1269,10 @@
           keyFeatures: [
             "Cuestionarios",
             "Online",
-            "Práctico",
+            "Interacción",
             "Dinámico",
             "Fácil",
+            "Gratis",
           ],
           tutorialSteps: [
             {
@@ -1215,10 +1317,11 @@
           fullSummary: "Está especializada en fomentar la participación de los alumnos con encuestas y chats a los que acceden gracias a una aplicación. Las dinámicas de los cuestionarios tienen un límite de tiempo y hay un ranking que gamifica el aprendizaje.",
           imageURL: "imglogo/socrativelogo.PNG",
           keyFeatures: [
-            "Participación en clase",
-            "Encuestas o Quiz",
+            "Interacción",
+            "Cuestionarios",
             "Chats grupales",
             "Dinámico",
+            "Gratis",
           ],
           tutorialSteps: [
             {
@@ -1278,6 +1381,7 @@
             "Desde casa",
             "Practicar idiomas",
             "Dinámico",
+            "Gratis y de paga",
           ],
           tutorialSteps: [
             {
@@ -1318,6 +1422,7 @@
             "Online",
             "Multitud de herramientas",
             "Gratis",
+            "Fácil",
           ],
           tutorialSteps: [
             {
@@ -1363,8 +1468,9 @@
           keyFeatures: [
             "Química",
             "Aplicación dinámica",
-            "Desafíos",
-            "Desde casa",
+            "Cuestionarios",
+            "Gratis y de paga",
+            "Fácil",
           ],
           tutorialSteps: [
             {
@@ -1418,6 +1524,9 @@
             "Informática",
             "Diversión",
             "Desde casa",
+            "Gratis y de paga",
+            "Fácil",
+            "Dinámico"
           ],
           tutorialSteps: [
             {
@@ -1587,6 +1696,100 @@
           displayGames(valor);
         });
       });
+
+      // Scroll to top functionality
+      const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+      window.addEventListener("scroll", () => {
+        if (window.pageYOffset > 300) {
+          scrollToTopBtn.classList.add("show");
+        } else {
+          scrollToTopBtn.classList.remove("show");
+        }
+      });
+
+      //Botones para filtrar
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      let activeFilters = [];
+
+      filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const filter = button.getAttribute('data-filter');
+          button.classList.toggle('active');
+          
+          if (button.classList.contains('active')) {
+            activeFilters.push(filter);
+          } else {
+            activeFilters = activeFilters.filter(f => f !== filter);
+          }
+          
+          applyFilters();
+        });
+      });
+
+      function applyFilters() {
+        const query = searchInput.value.toLowerCase();
+        let filteredGames = filterGames(query);
+        
+        if (activeFilters.length > 0) {
+          filteredGames = filteredGames.filter(game => 
+            activeFilters.every(filter => game.keyFeatures.includes(filter))
+          );
+        }
+        
+        displayGames(filteredGames);
+      }
+
+      // Modificar la función filterGames existente
+      function filterGames(query) {
+        const allGames = [...games, ...games2, ...games3, ...games4];
+        
+        if (query.trim() === "" && activeFilters.length === 0) {
+          const activeButton = document.querySelector(".pagination button.active");
+          switch (activeButton.textContent) {
+            case "1": return games;
+            case "2": return games2;
+            case "3": return games3;
+            case "4": return games4;
+            default: return games;
+          }
+        } else {
+          return allGames.filter(game =>
+            (game.title.toLowerCase().includes(query) ||
+            game.author.toLowerCase().includes(query) ||
+            game.year.toString().includes(query)) &&
+            (activeFilters.length === 0 || activeFilters.every(filter => game.keyFeatures.includes(filter)))
+          );
+        }
+      }
+
+      // Modificar el event listener del searchInput
+      searchInput.addEventListener("input", () => {
+        applyFilters();
+      });
+
+      // Modificar el event listener de los botones de paginación
+      paginationButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          paginationButtons.forEach((btn) => btn.classList.remove("active"));
+          button.classList.add("active");
+          activeFilters = []; // Reiniciar filtros al cambiar de página
+          filterButtons.forEach(btn => btn.classList.remove('active'));
+          applyFilters();
+        });
+      });
+
+      // Llamada inicial para mostrar los juegos
+      applyFilters();
+
+      //Script para ir arriba
+      scrollToTopBtn.addEventListener("click", () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      });
+
       displayGames(games);
 
     </script>

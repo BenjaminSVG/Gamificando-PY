@@ -15,7 +15,6 @@
         --text-color: #34495e;
         --header-color: #2c3e50;
       }
-
       body {
         font-family: "Poppins", sans-serif;
         line-height: 1.6;
@@ -25,7 +24,6 @@
         padding: 20px;
         background-color: var(--background-color);
       }
-
       header {
         text-align: center;
         background: linear-gradient(
@@ -39,18 +37,15 @@
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         margin-bottom: 30px;
       }
-
       h1 {
         font-size: 2.5rem;
         margin: 0 0 1.5rem;
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
       }
-
       nav {
         display: flex;
         justify-content: center;
       }
-
       .menu-button {
         background-color: white;
         color: var(--primary-color);
@@ -65,19 +60,16 @@
         letter-spacing: 1px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       }
-
       .menu-button:hover {
         background-color: var(--secondary-color);
         color: white;
         transform: translateY(-2px);
         box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
       }
-
       .menu-button:active {
         transform: translateY(0);
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       }
-
       section {
         background-color: white;
         margin: 30px 0;
@@ -86,56 +78,46 @@
         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
         transition: transform 0.3s ease;
       }
-
       section:hover {
         transform: translateY(-5px);
       }
-
       h2 {
         color: var(--header-color);
         border-bottom: 2px solid var(--primary-color);
         padding-bottom: 10px;
         margin-top: 0;
       }
-
       .info-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
       }
-
       .info-item {
         background-color: #f8f9fa;
         padding: 15px;
         border-radius: 10px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
       }
-
       .info-item strong {
         color: var(--primary-color);
         font-weight: 600;
       }
-
       .tutorial-step h3 {
         color: var(--secondary-color);
         margin-top: 0;
       }
-
       .tutorial-step p {
         margin-bottom: 0;
       }
-
       .features-list {
         list-style-type: none;
         padding: 0;
       }
-
       .features-list li {
         margin-bottom: 15px;
         padding-left: 25px;
         position: relative;
       }
-
       .features-list li::before {
         content: "✓";
         color: var(--secondary-color);
@@ -144,14 +126,12 @@
         top: 2px;
         font-weight: bold;
       }
-
       .game-cover {
         text-align: center;
         margin-top: 20px;
         max-width: 100%;
         height: auto;
       }
-
       .game-cover img {
         max-width: 100%;
         max-height: 300px;
@@ -160,24 +140,20 @@
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         transition: box-shadow 0.3s ease, transform 0.3s ease;
       }
-
       .game-cover img:hover {
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         transform: translateY(-5px);
       }
-
       @media (min-width: 768px) {
         .game-cover img {
           max-height: 400px;
         }
       }
-
       @media (max-width: 600px) {
         .info-grid {
           grid-template-columns: 1fr;
         }
       }
-
       .tutorial-step {
         display: flex;
         align-items: center;
@@ -187,12 +163,10 @@
         border-radius: 10px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
       }
-
       .tutorial-content {
         flex: 1;
         padding-right: 20px;
       }
-
       .tutorial-image {
         width: 200px; /* Tamaño preestablecido */
         max-width: 100%;
@@ -201,16 +175,13 @@
         cursor: pointer;
         transition: transform 0.3s ease;
       }
-
       .tutorial-image.has-image {
         cursor: pointer;
         transition: transform 0.3s ease;
       }
-
       .tutorial-image:hover {
         transform: scale(1.05);
       }
-
       .tutorial-image img {
         max-width: 100%;
         height: auto;
@@ -219,11 +190,9 @@
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         transition: transform 0.3s ease;
       }
-
       .tutorial-image.has-image img:active {
         transform: scale(0.95);
       }
-
       .modal {
         display: none;
         position: fixed;
@@ -235,7 +204,6 @@
         background-color: rgba(0, 0, 0, 0.9);
         overflow: auto;
       }
-
       .modal-content {
         position: absolute;
         top: 50%;
@@ -247,12 +215,10 @@
         opacity: 0;
         transition: all 0.3s ease-in-out;
       }
-
       .modal-content.show {
         opacity: 1;
         transform: translate(-50%, -50%) scale(1);
       }
-
       .close {
         position: absolute;
         top: 15px;
@@ -263,14 +229,12 @@
         transition: 0.3s;
         z-index: 1001;
       }
-
       .close:hover,
       .close:focus {
         color: #bbb;
         text-decoration: none;
         cursor: pointer;
       }
-
       @media (max-width: 600px) {
         .tutorial-step {
           flex-direction: column;
@@ -293,7 +257,6 @@
           object-fit: contain;
         }
       }
-
       #summary {
         background-color: white;
         margin: 30px 0;
@@ -302,7 +265,6 @@
         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
         transition: transform 0.3s ease;
       }
-
       #gameSummary {
         line-height: 1.8;
         text-align: justify;
@@ -324,15 +286,12 @@
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         z-index: 1000;
       }
-
       #scrollToTopBtn:hover {
         background-color: var(--secondary-color);
       }
-
       #scrollToTopBtn.show {
         opacity: 1;
       }
-
       @media (max-width: 600px) {
         #scrollToTopBtn {
           width: 40px;
